@@ -599,18 +599,18 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-      1724         32         49          8         73      13792   conecta_k_2023.o
-       176          0          0          0          0        344   conecta_k_buscar_alineamiento_arm.o
-       176          8          0          8          0        332   conecta_k_hay_linea_arm_arm.o
-       348          8          0          8          0        376   conecta_k_hay_linea_arm_armv2.o
-       180          8          0          8          0        328   conecta_k_hay_linea_arm_c.o
-        68          0          0          0          0       1913   entrada.o
-         8          0          0          0          0        419   main.o
-        32         12          0          0       1160        288   startup.o
-       376          0          0          0          0       5619   tablero.o
+      1724         32         49          8         73      13908   conecta_k_2023.o
+       176          0          0          0          0        360   conecta_k_buscar_alineamiento_arm.o
+       176          8          0          8          0        348   conecta_k_hay_linea_arm_arm.o
+       348          8          0          8          0        392   conecta_k_hay_linea_arm_armv2.o
+       180          8          0          8          0        344   conecta_k_hay_linea_arm_c.o
+        68          0          0          0          0       1977   entrada.o
+         8          0          0          0          0        435   main.o
+        32         12          0          0       1160        304   startup.o
+       376          0          0          0          0       5739   tablero.o
 
     ----------------------------------------------------------------------
-      3088         68         84         32       1236      23411   Object Totals
+      3088         68         84         32       1236      23807   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          0          0          3          0          3          0   (incl. Padding)
 
@@ -662,8 +662,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      3680         88         84         32       1336      23523   Grand Totals
-      3680         88         84         32       1336      23523   ELF Image Totals
+      3680         88         84         32       1336      23919   Grand Totals
+      3680         88         84         32       1336      23919   ELF Image Totals
       3680         88         84         32          0          0   ROM Totals
 
 ==============================================================================

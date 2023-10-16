@@ -5,7 +5,7 @@
 <h2>Tool Versions:</h2>
 IDE-Version: µVision V5.26.2.0
 Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: dfdfsh hdfsh, shdsfhdf, LIC=----
+License Information: javier perez, unizar, LIC=----
  
 Tool Versions:
 Toolchain:       MDK-Lite  Version: 5.26.2.0
@@ -21,38 +21,52 @@ Target DLL:      UL2ARM.DLL V1.74.10.0
 Dialog DLL:      TARMP.DLL V1.53.0.0
  
 <h2>Project:</h2>
-\\Mac\Home\Desktop\ph\p1_815877-Pérez_Salazar_841983-Larraz_Jordanc\conectaK_2023.uvproj
-Project File Date:  10/14/2023
+C:\Users\javiWindows11Vm\Documents\GitHub\PH\Parte2\p2_815877-Pérez_Salazar_841983-Larraz_Jordan\conectaK_2023.uvproj
+Project File Date:  10/16/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
 assembling conecta_K_buscar_alineamiento_arm.s...
-assembling conecta_K_hay_linea_arm.s...
 assembling Startup.s...
+assembling conecta_K_hay_linea_arm.s...
 assembling conecta_K_hay_linea_arm_arm.s...
 assembling conecta_K_hay_linea_arm_armv2.s...
 compiling main.c...
 compiling entrada.c...
 compiling conecta_K_2023.c...
 compiling temporizador_drv.c...
-compiling tablero.c...
-compiling temporizador_hal.c...
-temporizador_hal.h(4): warning:  #1295-D: Deprecated declaration temporizador_hal_iniciar - give arg types
-  void temporizador_hal_iniciar();
-temporizador_hal.h(5): warning:  #1295-D: Deprecated declaration temporizador_hal_empezar - give arg types
-  void temporizador_hal_empezar();
 temporizador_hal.h(6): warning:  #1295-D: Deprecated declaration temporizador_hal_leer - give arg types
   uint64_t temporizador_hal_leer();
 temporizador_hal.h(7): warning:  #1295-D: Deprecated declaration temporizador_hal_parar - give arg types
   uint64_t temporizador_hal_parar();
 temporizador_hal.h(8): warning:  #1-D: last line of file ends without a newline
   #endif // CELDA_H
-temporizador_hal.c: 5 warnings, 0 errors
-linking...
-Program Size: Code=3244 RO-data=84 RW-data=32 ZI-data=1336  
-".\Objects\conecta_K_2023.axf" - 0 Error(s), 5 Warning(s).
-Build Time Elapsed:  00:00:02
+temporizador_drv.h(6): warning:  #1295-D: Deprecated declaration temporizador_drv_leer - give arg types
+  uint64_t temporizador_drv_leer();
+temporizador_drv.h(7): warning:  #1295-D: Deprecated declaration temporizador_drv_parar - give arg types
+  uint64_t temporizador_drv_parar();
+temporizador_drv.h(8): warning:  #1-D: last line of file ends without a newline
+  #endif // CELDA_H
+temporizador_drv.c(17): warning:  #120-D: return value type does not match the function type
+  		return temporizador_hal_leer
+temporizador_drv.c(18): error:  #65: expected a ";"
+  }
+temporizador_drv.c: 7 warnings, 1 error
+compiling tablero.c...
+compiling temporizador_hal.c...
+temporizador_hal.h(6): warning:  #1295-D: Deprecated declaration temporizador_hal_leer - give arg types
+  uint64_t temporizador_hal_leer();
+temporizador_hal.h(7): warning:  #1295-D: Deprecated declaration temporizador_hal_parar - give arg types
+  uint64_t temporizador_hal_parar();
+temporizador_hal.h(8): warning:  #1-D: last line of file ends without a newline
+  #endif // CELDA_H
+temporizador_hal.c(31): error:  #65: expected a ";"
+  }
+temporizador_hal.c: 3 warnings, 1 error
+".\Objects\conecta_K_2023.axf" - 2 Error(s), 10 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
