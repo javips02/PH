@@ -6,7 +6,7 @@
 
 #define TIMER_PCLK 60000000  // Frecuencia de reloj del LPC2105 en Hz
 #define TEMPORIZADOR_HAL_TICKS2US(ticks) ((ticks * 1000000) / TIMER_PCLK)
-static volatile unsigned int timer0_int_count = 0; // número de interrupciones
+static volatile uint64_t timer0_int_count = 0; // número de interrupciones
 void timer0_ISR (void) __irq;    // Generar interrupción
 
 /* Setup the Timer Counter 0 Interrupt */
@@ -30,7 +30,7 @@ void temporizador_hal_empezar(void){
 }
 
 uint64_t temporizador_hal_leer(void){
-		return timer0_int_count*T0MR0 + T0TC;
+		return timer0_int_count ;//*T0MR0 + T0TC; Estamos contando sólamente ticks, no?
 }
 uint64_t temporizador_hal_parar(void){
 			T0TCR = 3;

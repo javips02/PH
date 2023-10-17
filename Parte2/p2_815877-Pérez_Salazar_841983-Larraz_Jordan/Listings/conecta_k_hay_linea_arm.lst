@@ -1,0 +1,233 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000 00000004 
+                       K_SIZE  EQU              4           ;.include "config_c
+                                                            onecta_k.h" MIRAR C
+                                                            OMO INCLUIR GLOBALE
+                                                            S DE C EN ENSAMBLAD
+                                                            OR
+    2 00000000 00000004 
+                       N_DELTAS
+                               EQU              4
+    3 00000000                 AREA             datos,DATA,READWRITE
+    4 00000000         
+    5 00000000 00 FF FF 
+              01       deltas_fila
+                               DCB              0x00,0xff,0xff,0x01
+    6 00000004 FF 00 FF 
+              FF       deltas_columnas
+                               DCB              0xff,0x00,0xff,0xff
+    7 00000008         
+    8 00000008                 AREA             prog,CODE,READONLY
+    9 00000000                 ENTRY
+   10 00000000                 IMPORT           conecta_K_buscar_alineamiento_c
+   11 00000000                 EXPORT           conecta_K_hay_linea_arm_c
+   12 00000000                 PRESERVE8        {TRUE}
+   13 00000000         
+   14 00000000         conecta_K_hay_linea_arm_c
+   15 00000000 E92D4FF0        stmdb            r13!, {r4-r10, fp, lr} ; apilam
+                                                            os registros que po
+                                                            driamos machacar
+   16 00000004 E1A04000        mov              r4, r0      ; r4=t
+   17 00000008 E1A05001        mov              r5, r1      ; r5 = fila
+   18 0000000C E1A06002        mov              r6, r2      ; r6 = columna
+   19 00000010 E1A07003        mov              r7, r3      ; r7 = color
+   20 00000014         
+   21 00000014 E3A08000        mov              r8, #0      ; r8 = i =0
+   22 00000018 E3A09000        mov              r9 , #0     ; r9 = long_linea
+   23 0000001C E3580004 
+                       for     cmp              r8, #N_DELTAS ; r8 < N_DELTAS?
+   24 00000020 AA00001E        bge              finFalse
+   25 00000024 E59F0080        ldr              r0, =deltas_fila ; r0 = direcci
+                                                            on de deltas_fila
+   26 00000028 E59F1080        ldr              r1, =deltas_columnas ; r1 = dir
+                                                            eccion de deltas_co
+                                                            lumna
+   27 0000002C E19020D8        ldrsb            r2, [r0,r8] ; r2 = deltas_fila 
+                                                            i
+   28 00000030 E19130D8        ldrsb            r3, [r1, r8] ; r3 = deltas_colu
+                                                            mna i
+   29 00000034 E92D000C        stmdb            sp!, {r2, r3} ; apilo como para
+                                                            metros
+   30 00000038 E1A00004        mov              r0, r4      ; copiade parametro
+                                                            s para pasarlos
+   31 0000003C E1A01005        mov              r1, r5
+   32 00000040 E1A02006        mov              r2, r6
+   33 00000044 E1A03007        mov              r3, r7      ;
+   34 00000048 EBFFFFFE        bl               conecta_K_buscar_alineamiento_c
+   35 0000004C E8BD000C        ldmia            sp!, {r2,r3} ; desapilo deltas 
+                                                            que usare
+   36 00000050 E3500004        cmp              r0, #K_SIZE ; comparo para sabe
+                                                            r si linea es true
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   37 00000054 AA00000E        bge              finTrue
+   38 00000058 E1A09000        mov              r9, r0      ; lo muevo para alm
+                                                            acenar el resultado
+                                                            
+   39 0000005C E2622000        rsb              r2, r2, #0  ; -delatFIlai
+   40 00000060 E2633000        rsb              r3, r3, #0  ; -delatColumna i
+   41 00000064 E92D000C        stmdb            sp!, {r2,r3} ; apilo deltas com
+                                                            o parametro
+   42 00000068 E1A00004        mov              r0, r4
+   43 0000006C E0851002        add              r1, r5, r2  ; updatefila
+   44 00000070 E0862003        add              r2, r6, r3  ; updatecolumna
+   45 00000074 E1A03007        mov              r3, r7      ;
+   46 00000078 EBFFFFFE        bl               conecta_K_buscar_alineamiento_c
+   47 0000007C E28DD008        add              sp, sp, #8  ; libero pila
+   48 00000080 E0899000        add              r9, r9, r0  ; incremento long l
+                                                            inea con lo que hay
+                                                            a salido
+   49 00000084 E3590004        cmp              r9, #4
+   50 00000088 AA000001        bge              finTrue
+   51 0000008C E2888001        add              r8, r8, #1  ;i++
+   52 00000090 EAFFFFE1        b                for
+   53 00000094         
+   54 00000094 E3A00001 
+                       finTrue mov              r0, #1      ; final que devolve
+                                                            ra un uno porque li
+                                                            nea es true
+   55 00000098 E8BD4FF0        ldmia            sp!, {r4-r10, fp, lr}
+   56 0000009C E12FFF1E        bx               lr
+   57 000000A0 E3A00000 
+                       finFalse
+                               mov              r0, #0      ; final que devuelv
+                                                            e false porque i > 
+                                                            N_DELTAS
+   58 000000A4 E8BD4FF0        ldmia            sp!, {r4-r10, fp, lr}
+   59 000000A8 E12FFF1E        bx               lr
+   60 000000AC                 END
+              00000000 
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --apcs=interwork --depend=.\o
+bjects\conecta_k_hay_linea_arm.d -o.\objects\conecta_k_hay_linea_arm.o -IC:\Kei
+l_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\INC\Philips -
+-predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 526" --list=.\li
+stings\conecta_k_hay_linea_arm.lst conecta_K_hay_linea_arm.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+datos 00000000
+
+Symbol: datos
+   Definitions
+      At line 3 in file conecta_K_hay_linea_arm.s
+   Uses
+      None
+Comment: datos unused
+deltas_columnas 00000004
+
+Symbol: deltas_columnas
+   Definitions
+      At line 6 in file conecta_K_hay_linea_arm.s
+   Uses
+      At line 26 in file conecta_K_hay_linea_arm.s
+Comment: deltas_columnas used once
+deltas_fila 00000000
+
+Symbol: deltas_fila
+   Definitions
+      At line 5 in file conecta_K_hay_linea_arm.s
+   Uses
+      At line 25 in file conecta_K_hay_linea_arm.s
+Comment: deltas_fila used once
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+conecta_K_hay_linea_arm_c 00000000
+
+Symbol: conecta_K_hay_linea_arm_c
+   Definitions
+      At line 14 in file conecta_K_hay_linea_arm.s
+   Uses
+      At line 11 in file conecta_K_hay_linea_arm.s
+Comment: conecta_K_hay_linea_arm_c used once
+finFalse 000000A0
+
+Symbol: finFalse
+   Definitions
+      At line 57 in file conecta_K_hay_linea_arm.s
+   Uses
+      At line 24 in file conecta_K_hay_linea_arm.s
+Comment: finFalse used once
+finTrue 00000094
+
+Symbol: finTrue
+   Definitions
+      At line 54 in file conecta_K_hay_linea_arm.s
+   Uses
+      At line 37 in file conecta_K_hay_linea_arm.s
+      At line 50 in file conecta_K_hay_linea_arm.s
+
+for 0000001C
+
+Symbol: for
+   Definitions
+      At line 23 in file conecta_K_hay_linea_arm.s
+   Uses
+      At line 52 in file conecta_K_hay_linea_arm.s
+Comment: for used once
+prog 00000000
+
+Symbol: prog
+   Definitions
+      At line 8 in file conecta_K_hay_linea_arm.s
+   Uses
+      None
+Comment: prog unused
+5 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+K_SIZE 00000004
+
+Symbol: K_SIZE
+   Definitions
+      At line 1 in file conecta_K_hay_linea_arm.s
+   Uses
+      At line 36 in file conecta_K_hay_linea_arm.s
+Comment: K_SIZE used once
+N_DELTAS 00000004
+
+Symbol: N_DELTAS
+   Definitions
+      At line 2 in file conecta_K_hay_linea_arm.s
+   Uses
+      At line 23 in file conecta_K_hay_linea_arm.s
+Comment: N_DELTAS used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+conecta_K_buscar_alineamiento_c 00000000
+
+Symbol: conecta_K_buscar_alineamiento_c
+   Definitions
+      At line 10 in file conecta_K_hay_linea_arm.s
+   Uses
+      At line 34 in file conecta_K_hay_linea_arm.s
+      At line 46 in file conecta_K_hay_linea_arm.s
+
+1 symbol
+345 symbols in table

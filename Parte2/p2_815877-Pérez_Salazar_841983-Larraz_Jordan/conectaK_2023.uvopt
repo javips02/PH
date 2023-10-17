@@ -120,7 +120,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGDARM</Key>
-          <Name>(134=-1,-1,-1,-1,0)(135=-1,-1,-1,-1,0)(107=-1,-1,-1,-1,0)(108=-1,-1,-1,-1,0)(106=-1,-1,-1,-1,0)(105=-1,-1,-1,-1,0)(80=-1,-1,-1,-1,0)(104=-1,-1,-1,-1,0)(100=-1,-1,-1,-1,0)(113=-1,-1,-1,-1,0)(112=-1,-1,-1,-1,0)(136=-1,-1,-1,-1,0)(117=-1,-1,-1,-1,0)(110=-1,-1,-1,-1,0)(111=-1,-1,-1,-1,0)(114=-1,-1,-1,-1,0)(115=-1,-1,-1,-1,0)(116=-1,-1,-1,-1,0)</Name>
+          <Name>(134=-1,-1,-1,-1,0)(135=-1,-1,-1,-1,0)(107=-1,-1,-1,-1,0)(108=-1,-1,-1,-1,0)(106=-1,-1,-1,-1,0)(105=-1,-1,-1,-1,0)(80=1406,617,1917,1027,0)(104=-1,-1,-1,-1,0)(100=-1,-1,-1,-1,0)(113=-1,-1,-1,-1,0)(112=-1,-1,-1,-1,0)(136=-1,-1,-1,-1,0)(117=-1,-1,-1,-1,0)(110=1394,575,1920,1030,0)(111=-1,-1,-1,-1,0)(114=-1,-1,-1,-1,0)(115=-1,-1,-1,-1,0)(116=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -137,25 +137,41 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>9</LineNumber>
+          <LineNumber>42</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>576</Address>
+          <Address>2572</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\javiWindows11Vm\Documents\GitHub\PH\Parte2\p2_815877-PÃ©rez_Salazar_841983-Larraz_Jordan\main.c</Filename>
+          <Filename>C:\Users\javiWindows11Vm\Documents\GitHub\PH\Parte2\p2_815877-PÃ©rez_Salazar_841983-Larraz_Jordan\temporizador_hal.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\conecta_K_2023\temporizador_hal.c\42</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>8</LineNumber>
+          <LineNumber>43</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>572</Address>
+          <Address>2576</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>C:\Users\javiWindows11Vm\Documents\GitHub\PH\Parte2\p2_815877-PÃ©rez_Salazar_841983-Larraz_Jordan\temporizador_hal.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\conecta_K_2023\temporizador_hal.c\43</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>10</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>1984</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -164,41 +180,69 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>C:\Users\javiWindows11Vm\Documents\GitHub\PH\Parte2\p2_815877-PÃ©rez_Salazar_841983-Larraz_Jordan\main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>42</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>848</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\javiWindows11Vm\Documents\GitHub\PH\Parte2\p2_815877-PÃ©rez_Salazar_841983-Larraz_Jordan\temporizador_hal.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\conecta_K_2023\main.c\10</Expression>
         </Bp>
         <Bp>
           <Number>3</Number>
           <Type>0</Type>
-          <LineNumber>43</LineNumber>
+          <LineNumber>11</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>852</Address>
+          <Address>1988</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\javiWindows11Vm\Documents\GitHub\PH\Parte2\p2_815877-PÃ©rez_Salazar_841983-Larraz_Jordan\temporizador_hal.c</Filename>
+          <Filename>C:\Users\javiWindows11Vm\Documents\GitHub\PH\Parte2\p2_815877-PÃ©rez_Salazar_841983-Larraz_Jordan\main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\conecta_K_2023\main.c\11</Expression>
+        </Bp>
+        <Bp>
+          <Number>4</Number>
+          <Type>0</Type>
+          <LineNumber>13</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>1992</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>C:\Users\javiWindows11Vm\Documents\GitHub\PH\Parte2\p2_815877-PÃ©rez_Salazar_841983-Larraz_Jordan\main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\conecta_K_2023\main.c\13</Expression>
+        </Bp>
+        <Bp>
+          <Number>5</Number>
+          <Type>0</Type>
+          <LineNumber>17</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>2024</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>C:\Users\javiWindows11Vm\Documents\GitHub\PH\Parte2\p2_815877-PÃ©rez_Salazar_841983-Larraz_Jordan\main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\conecta_K_2023\main.c\17</Expression>
         </Bp>
       </Breakpoint>
+      <WatchWindow1>
+        <Ww>
+          <count>0</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>ticks</ItemText>
+        </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>timer0_int_count</ItemText>
+        </Ww>
+      </WatchWindow1>
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>
@@ -236,7 +280,7 @@
       </Tracepoint>
       <DebugFlag>
         <trace>0</trace>
-        <periodic>0</periodic>
+        <periodic>1</periodic>
         <aLwin>1</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
