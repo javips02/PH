@@ -4,9 +4,8 @@
 #include "temporizador_drv.h"
 
 /* Setup the Timer Counter 0 Interrupt */
-void temporizador_drv_iniciar (void) {
+void temporizador_drv_iniciar (void) { //Genera timer 
 		temporizador_hal_iniciar();
-
 }
 
 void temporizador_drv_empezar(void){
@@ -14,7 +13,7 @@ void temporizador_drv_empezar(void){
 }
 
 uint64_t temporizador_drv_leer(void){
-		return temporizador_hal_leer
+		return temporizador_hal_leer();
 }
 uint64_t temporizador_drv_parar(void){
 		return temporizador_hal_parar();
