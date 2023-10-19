@@ -13,8 +13,8 @@ void temporizador_drv_empezar(void){
 }
 
 uint64_t temporizador_drv_leer(void){
-	uint64_t lectura= temporizador_hal_leer();	
-	return lectura;
+	uint64_t lectura= temporizador_hal_leer();	 
+	return  TEMPORIZADOR_HAL_TICKS2US(lectura);
 }
 uint64_t temporizador_drv_parar(void){
 		return temporizador_hal_parar();

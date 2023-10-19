@@ -11,9 +11,9 @@ int main (void) {
 	temporizador_drv_empezar();
 	uint64_t ticks;
 	ticks	= temporizador_drv_leer();
-	while((ticks+1) != temporizador_drv_leer()) {} //de aquí no pasamos hasta qeu funcione bien el timer
+	while((ticks+100) <= temporizador_drv_leer()) {} //de aquí no pasamos hasta qeu funcione bien el timer
 	//jugar
-	ticks = 0;
+	temporizador_drv_parar();
 	conecta_K_jugar();
 	
 	while(1); //no hay S.O., no se retorna

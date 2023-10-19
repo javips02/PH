@@ -13,30 +13,30 @@ void wait (void)  {                         /* wait function */
 }
 
 int main (void) {
-  unsigned int j;                           /* LED var */
+  unsigned int j;                           /* LED var */ 
 	 
 	eint0_init(); // activates EINT0 interrupts
-	// Nota la gestión del GPIO vosotros la debeís hacer en GPIO.c no en el main o en el reversi
+	// Nota la gestiï¿½n del GPIO vosotros la debeï¿½s hacer en GPIO.c no en el main o en el reversi
 	IODIR 		= 0x00FF0000;					//Set LED pins as outputs
 	IOCLR 		= 0x00FF0000;					//Initialices the outputs to 0
 
-	// bucle para comprobar el funcionamiento del botón. El objetivo es comprobar que se lleva bien la cuenta de pulsaciones
-	// con sólo una interrupción EXTINT0 por pulsación
-	// en este proyecto no va a funcionar porque la interrupción se activa por nivel y no se ha añadido la gestión necesaria para ue sólo interrumpa una vez.
+	// bucle para comprobar el funcionamiento del botï¿½n. El objetivo es comprobar que se lleva bien la cuenta de pulsaciones
+	// con sï¿½lo una interrupciï¿½n EXTINT0 por pulsaciï¿½n
+	// en este proyecto no va a funcionar porque la interrupciï¿½n se activa por nivel y no se ha aï¿½adido la gestiï¿½n necesaria para ue sï¿½lo interrumpa una vez.
 	while (eint0_read_count() < 4){
-		PM_power_down(); // de aquí sólo despertamos si hay pulsación
+		PM_power_down(); // de aquï¿½ sï¿½lo despertamos si hay pulsaciï¿½n
 		};	
 // bucle que realiza un blink de leds cada 50ms	   
 	timer0_init(); // generates an interrupt every 0,05ms and increments timeval0
 	while (1)  {                                  /* Loop forever */
     for (j = 0x010000; j < 0x800000; j <<= 1) { /* Blink LED 0,1,2,3,4,5,6 */
-      // Nota la gestión del GPIO vosotros la debeís hacer en GPIO.c no en el main o en el reversi
+      // Nota la gestiï¿½n del GPIO vosotros la debeï¿½s hacer en GPIO.c no en el main o en el reversi
 			IOSET = j;                               /* Turn on LED */
       wait ();                                  /* call wait function */
       IOCLR = j;                               /* Turn off LED */
     }
     for (j = 0x800000; j > 0x010000; j >>=1 ) { /* Blink LED 7,6,5,4,3,2,1 */
-      // Nota la gestión del GPIO vosotros la debeís hacer en GPIO.c no en el main o en el reversi
+      // Nota la gestiï¿½n del GPIO vosotros la debeï¿½s hacer en GPIO.c no en el main o en el reversi
 			IOSET = j;                               /* Turn on LED */
       wait ();                                  /* call wait function */
       IOCLR = j;                               /* Turn off LED */

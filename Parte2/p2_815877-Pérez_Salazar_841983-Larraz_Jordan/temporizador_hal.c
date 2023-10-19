@@ -34,7 +34,7 @@ uint64_t temporizador_hal_leer(void){
 }
 uint64_t temporizador_hal_parar(void){
 			T0TCR = 3;
-			T0TCR = 1;
+			T0TCR = 0;
 			return temporizador_hal_leer();
 }
 
