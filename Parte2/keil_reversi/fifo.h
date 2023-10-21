@@ -1,29 +1,21 @@
-#ifndef TEMPORIZADOR_HAL_H
-#define TEMPORIZADOR_HAL_H
+#ifndef FIFO_H
+#define FIFO_H
 
 #include "gpio_hal.h"
 #include "eventos.h"
+#include "io_reserva.h"
 
 #include <stdint.h>
-
-//typedef struct Evento;
 
 #define MAX 32 //mover a io_reserva
 
 // Definición de la estructura EVENTO_T
 typedef struct {
     EVENTO_T id_evento; // Campo para identificar el evento
+		uint8_t procesado;
 		uint32_t stats;
 } EVENTO;
 
-
-int cqueue_arr[MAX];
-int front = -1;
-int rear = -1;
-
-
-// Variable para mantener un registro de estadísticas
-uint32_t estadisticasEventos[MAX];
 
 void FIFO_inicializar(GPIO_HAL_PIN_T pin_overflow);
 

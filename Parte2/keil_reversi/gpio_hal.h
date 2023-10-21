@@ -1,5 +1,5 @@
-#ifndef GPIO_HAL
-#define GPIO_HAL
+#ifndef GPIO_HAL_H
+#define GPIO_HAL_H
 #include <LPC210X.h>                            
 //poner inline!!!!
 #include <inttypes.h>
@@ -33,10 +33,11 @@ __inline static void gpio_hal_sentido(GPIO_HAL_PIN_T gpio_inicial, uint8_t num_b
 };
 __inline static uint32_t gpio_hal_leer(GPIO_HAL_PIN_T gpio_inicial, uint8_t num_bits) {
     // Leer el valor de los bits indicados desde gpio_inicial y devolver ese valor como un entero.
-    
+    gpio_hal_sentido(gpio_inicial, num_bits, 	GPIO_HAL_PIN_DIR_OUTPUT);
     return (IOPIN >> gpio_inicial) & ((1u << num_bits) - 1);
 };
 		__inline static void gpio_hal_escribir(GPIO_HAL_PIN_T bit_inicial, uint8_t num_bits, uint32_t valor){
+			 gpio_hal_sentido(bit_inicial, num_bits, 	GPIO_HAL_PIN_DIR_INPUT);
     // Crear una máscara para los bits que queremos escribir
     uint32_t mascara = ((1u << num_bits) - 1) << bit_inicial;
     

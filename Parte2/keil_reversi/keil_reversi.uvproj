@@ -442,6 +442,11 @@
           <GroupName>Source Code</GroupName>
           <Files>
             <File>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main.c</FilePath>
+            </File>
+            <File>
               <FileName>Power_management.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Power_management.c</FilePath>
@@ -477,17 +482,27 @@
           <GroupName>Documentation</GroupName>
         </Group>
         <Group>
+          <GroupName>Drivers</GroupName>
+          <Files>
+            <File>
+              <FileName>temporizador_drv.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\temporizador_drv.h</FilePath>
+            </File>
+            <File>
+              <FileName>temporizador_drv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\temporizador_drv.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>HAL</GroupName>
           <Files>
             <File>
-              <FileName>gpio_hal.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\gpio_hal.c</FilePath>
-            </File>
-            <File>
-              <FileName>gpio_hal.h</FileName>
+              <FileName>temporizador_hal.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\gpio_hal.h</FilePath>
+              <FilePath>.\temporizador_hal.h</FilePath>
             </File>
             <File>
               <FileName>temporizador_hal.c</FileName>
@@ -495,15 +510,28 @@
               <FilePath>.\temporizador_hal.c</FilePath>
             </File>
             <File>
-              <FileName>temporizador_hal.h</FileName>
+              <FileName>gpio_hal.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\temporizador_hal.h</FilePath>
+              <FilePath>.\gpio_hal.h</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>DRV</GroupName>
+          <GroupName>E/S</GroupName>
+        </Group>
+        <Group>
+          <GroupName>AUX</GroupName>
           <Files>
+            <File>
+              <FileName>io_reserva.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\io_reserva.h</FilePath>
+            </File>
+            <File>
+              <FileName>fifo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\fifo.h</FilePath>
+            </File>
             <File>
               <FileName>eventos.h</FileName>
               <FileType>5</FileType>
@@ -515,24 +543,29 @@
               <FilePath>.\fifo.c</FilePath>
             </File>
             <File>
-              <FileName>fifo.h</FileName>
+              <FileName>planificador.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\fifo.h</FilePath>
+              <FilePath>.\planificador.h</FilePath>
             </File>
             <File>
-              <FileName>io_reserva.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\io_reserva.h</FilePath>
-            </File>
-            <File>
-              <FileName>temporizador_drv.c</FileName>
+              <FileName>planificador.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\temporizador_drv.c</FilePath>
+              <FilePath>.\planificador.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>hello_world</GroupName>
+          <Files>
+            <File>
+              <FileName>hello_world.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hello_world.h</FilePath>
             </File>
             <File>
-              <FileName>temporizador_drv.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\temporizador_drv.h</FilePath>
+              <FileName>hello_world.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hello_world.c</FilePath>
             </File>
           </Files>
         </Group>

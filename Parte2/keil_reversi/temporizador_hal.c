@@ -4,29 +4,37 @@
 
 //Definiciones de varibales
 
-#define TIMER_PCLK 60000000  // Frecuencia de reloj del LPC2105 en Hz
-#define TEMPORIZADOR_HAL_TICKS2US(ticks) ((ticks * 1000000) / TIMER_PCLK)
-static volatile uint64_t timer0_int_count = 0; // número de interrupciones
+static volatile uint64_t timer0_int_count; // número de interrupciones
+static volatile uint64_t timer1_int_count;
+
+
 void timer0_ISR (void) __irq;    // Generar interrupción
+void timer1_ISR (void) __irq;    // Generar interrupción
 
 /* Setup the Timer Counter 0 Interrupt */
 void temporizador_hal_iniciar (void) {
 		timer0_int_count = 0;	
+		timer1_int_count=0;
 		// configuration of Timer 0
-		T0MR0 = 2999;  								// 1mSec= 15000 - 1 counts .... Menos valor == interupciones más seguidas
+		T0PR = 2999;
+		T0MR0 = 1000;  								// 1mSec= 15000 - 1 counts .... Menos valor == interupciones más seguidas
     T0MCR = 3;                     // Generates an interrupt and resets the count when the value in ticks of MR0 is reached
-		T0TCR = 1;
+		T1MCR = 3;
+	
 		// configuration of the IRQ slot number 0 of the VIC for Timer 0 Interrupt
 		VICVectAddr0 = (unsigned long)timer0_ISR;          // set interrupt vector in 0
+		VICVectAddr1 = (unsigned long)timer1_ISR;
     // 0x20 bit 5 enables vectored IRQs. 
 		// 4 is the number of the interrupt assigned. Number 4 is the Timer 0 (see table 40 of the LPC2105 user manual  
-		VICVectCntl0 = 0x20 | 4;                   
-		VICIntEnable = VICIntEnable | 0x00000010 ;
+		VICVectCntl0 = 0x20 | 4;
+		VICVectCntl0 = 0x20 | 5;      	
 }
 
 void temporizador_hal_empezar(void){
-		T0IR = 1;                              // Clear interrupt flag
+		T0IR = 1;         	// Clear interrupt flag
+		T1TCR = 1;
 		VICIntEnable = VICIntEnable | 0x00000010 ;
+		VICIntEnable = VICIntEnable | 0x00000020 ;
 }
 
 uint64_t temporizador_hal_leer(void){
@@ -44,8 +52,24 @@ void timer0_ISR (void) __irq {
     T0IR = 1;                              // Bajar flag (interrupción manejada)
     VICVectAddr = 0;                            // Volvemos a activar VIC para atender próximas interrupciones
 }
+void timer1_ISR (void) __irq {
+    //timer1_int_count++;
+	if (callbackToDRV != NULL) {
+		callbackToDRV();
+	}
+    T1IR = 1;                              // Bajar flag (interrupción manejada)
+    VICVectAddr = 0;                            // Volvemos a activar VIC para atender próximas interrupciones
+}
 
 unsigned int timer0_read_int_count(void){
 	return timer0_int_count;
 };
+
+void temporizador_hal_reloj (uint32_t periodo, void (*funcion_callback)()){
+	 if (periodo == 0) {
+        T0TCR = 0; // Detener el temporizador
+    }
+	T1MR1 = periodo * 5000 -1;
+	callbackToDRV = funcion_callback;
+}
 
