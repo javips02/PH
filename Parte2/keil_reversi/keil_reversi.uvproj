@@ -363,7 +363,7 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
@@ -566,6 +566,21 @@
               <FileName>hello_world.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\hello_world.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>power</GroupName>
+          <Files>
+            <File>
+              <FileName>power_hal_wait.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\power_hal_wait.c</FilePath>
+            </File>
+            <File>
+              <FileName>power_hal_wait.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\power_hal_wait.h</FilePath>
             </File>
           </Files>
         </Group>

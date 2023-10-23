@@ -2,12 +2,11 @@
 #define TEMPORIZADOR_DRV_H
 //Definición del módulo TEMPORIZADOR_DRV, que se encarga de gestionar el timer del temporizador_hal
 #include <inttypes.h>
-#include "eventos.h"
-#include "fifo.h"
 #include "temporizador_hal.h"
 
-static void (encolarDRV)(EVENTO_T, uint32_t);
-static EVENTO_T id_evento_a_encolar;
+//static void *encolarDRV(EVENTO_T, uint32_t);
+//extern void (*encolarDRV)(EVENTO_T, uint32_t);
+
 
 void temporizador_drv_iniciar(void);
 void temporizador_drv_empezar(void);

@@ -24,7 +24,7 @@ void timer0_init (void) {
 }
 
 
-/* Timer Counter 0 Interrupt executes each 10ms @ 60 MHz CPU Clock 
+ Timer Counter 0 Interrupt executes each 10ms @ 60 MHz CPU Clock 
 void timer0_ISR (void) __irq {
     timer0_int_count++;
     T0IR = 1;                              // Clear interrupt flag

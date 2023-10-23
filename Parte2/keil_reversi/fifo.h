@@ -4,16 +4,16 @@
 #include "gpio_hal.h"
 #include "eventos.h"
 #include "io_reserva.h"
-
+#include "power_hal_wait.h"
 #include <stdint.h>
 
 #define MAX 32 //mover a io_reserva
 
 // Definición de la estructura EVENTO_T
 typedef struct {
-    EVENTO_T id_evento; // Campo para identificar el evento
+    EVENTO_T id; // Campo para identificar el evento
 		uint8_t procesado;
-		uint32_t stats;
+		uint32_t aux;
 } EVENTO;
 
 

@@ -1,7 +1,6 @@
 #ifndef GPIO_HAL_H
 #define GPIO_HAL_H
 #include <LPC210X.h>                            
-//poner inline!!!!
 #include <inttypes.h>
 
 typedef enum{
@@ -20,7 +19,7 @@ __inline static void gpio_hal_sentido(GPIO_HAL_PIN_T gpio_inicial, uint8_t num_b
 		 
 
     // Máscara para establecer bits en IODIR
-    uint32_t mascara = ((1u << num_bits) - 1) << gpio_inicial;
+    uint32_t mascara = ((1u << num_bits) - 1);
 
     if (direccion == GPIO_HAL_PIN_DIR_INPUT) {
         // Establecer los bits en IODIR a 0 para entrada
@@ -33,16 +32,17 @@ __inline static void gpio_hal_sentido(GPIO_HAL_PIN_T gpio_inicial, uint8_t num_b
 };
 __inline static uint32_t gpio_hal_leer(GPIO_HAL_PIN_T gpio_inicial, uint8_t num_bits) {
     // Leer el valor de los bits indicados desde gpio_inicial y devolver ese valor como un entero.
-    gpio_hal_sentido(gpio_inicial, num_bits, 	GPIO_HAL_PIN_DIR_OUTPUT);
     return (IOPIN >> gpio_inicial) & ((1u << num_bits) - 1);
 };
-		__inline static void gpio_hal_escribir(GPIO_HAL_PIN_T bit_inicial, uint8_t num_bits, uint32_t valor){
-			 gpio_hal_sentido(bit_inicial, num_bits, 	GPIO_HAL_PIN_DIR_INPUT);
-    // Crear una máscara para los bits que queremos escribir
-    uint32_t mascara = ((1u << num_bits) - 1) << bit_inicial;
+
+
+__inline static void gpio_hal_escribir(GPIO_HAL_PIN_T bit_inicial, uint8_t num_bits, uint32_t valor){
+    
+		uint32_t mascara = ((1u << num_bits) - 1) << bit_inicial;
     
     // Limpiar los bits que vamos a escribir en el valor original
-    IOPIN = (IOPIN & ~mascara);
+        IOPIN &= ~mascara;
+
     
     // Asegurarse de que el valor a escribir no exceda el número de bits indicados
     valor &= ((1u << num_bits) - 1);
