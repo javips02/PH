@@ -1,0 +1,14 @@
+.\planificador.o: planificador.c
+.\planificador.o: C:\Keil_v5\ARM\INC\Philips\LPC210X.h
+.\planificador.o: planificador.h
+.\planificador.o: fifo.h
+.\planificador.o: gpio_hal.h
+.\planificador.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\planificador.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\planificador.o: eventos.h
+.\planificador.o: io_reserva.h
+.\planificador.o: power_hal_wait.h
+.\planificador.o: hello_world.h
+.\planificador.o: temporizador_drv.h
+.\planificador.o: temporizador_hal.h
+.\planificador.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

@@ -12,10 +12,15 @@
 // Definición de la estructura EVENTO_T
 typedef struct {
     EVENTO_T id; // Campo para identificar el evento
-		uint8_t procesado;
-		uint32_t aux;
+		uint8_t procesado; //indica si está procesado (se podría hacer con indices de la cola)?
+		uint32_t aux; //Info adicional (no utilizado en esta entrega)
 } EVENTO;
-
+EVENTO cqueue_arr[MAX];
+int front = -1;
+int rear = -1;
+// Variable para mantener un registro de estadísticas
+uint32_t estadisticasEventos[MAX];
+uint32_t eventosEncolados;
 
 void FIFO_inicializar(GPIO_HAL_PIN_T pin_overflow);
 

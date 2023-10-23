@@ -1,6 +1,6 @@
 #include <LPC210X.h>                            // LPC21XX Peripheral Registers
 #include "hello_world.h"
-void FIFO_encolar(EVENTO_T ID_evento, uint32_t auxData);
+
 GPIO_HAL_PIN_T gpio=0;
 uint8_t bits_gpio=0;
 uint8_t cuenta=0;

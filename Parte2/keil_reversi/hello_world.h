@@ -3,7 +3,7 @@
 
 #include "gpio_hal.h"
 #include "temporizador_drv.h"
-
+#include "fifo.h"
 void hello_world_iniciar(GPIO_HAL_PIN_T gpio_inicial, uint8_t bits);
 void hello_world_tick_tack(void);
 #endif
