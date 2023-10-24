@@ -1,28 +1,19 @@
-                  
 #include <LPC210x.H>                       /* LPC210x definitions */
-#include "planificador.h"
-#include "Power_management.h"
+#include "fifo.h"
+#include "temporizador_drv.h"
 
-// Nota: wait es una espera activa. Se puede eliminar poniendo el procesador en modo iddle. Probad a hacerlo
-/*void wait (void)  {                          wait function 
-  unsigned int i;
-
-  i = timer0_read_int_count(); // reads the number of previous timer IRQs
-  while ((i + 10) != timer0_read_int_count());               waits for 10 interrupts, i.e. 50ms 
-}
-*/
-	int main (void) {
-	temporizador_drv_iniciar();
-	temporizador_hal_empezar();
-	gpio_hal_iniciar();
-	planificador();
-	
- 
-}
-
-
-//int main (void) {
-//  	
-//  
-//	
+//	int main (void) {
+//	temporizador_drv_iniciar();
+//	temporizador_hal_empezar();
+//	gpio_hal_iniciar();
+//	planificador();
 //}
+
+
+int main (void) {
+	FIFO_inicializar(GPIO_OVERFLOW);
+	temporizador_drv_iniciar(); //generamos timers (0 y 1)
+	temporizador_drv_reloj(10, FIFO_encolar, TIMER1); //programamos irq TIMER1
+	temporizador_drv_empezar(); //iniciamos cuenta de timers 0 y 1
+	while(1){} //esperamos a que haya overflow (nos quedaremos en FIFO_encolar en un while 1 con bit d verflow levantado	
+}

@@ -1,6 +1,5 @@
 .\main.o: main.c
 .\main.o: C:\Keil_v5\ARM\INC\Philips\LPC210x.H
-.\main.o: planificador.h
 .\main.o: fifo.h
 .\main.o: gpio_hal.h
 .\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
@@ -8,8 +7,6 @@
 .\main.o: eventos.h
 .\main.o: io_reserva.h
 .\main.o: power_hal_wait.h
-.\main.o: hello_world.h
 .\main.o: temporizador_drv.h
 .\main.o: temporizador_hal.h
 .\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\main.o: Power_management.h
