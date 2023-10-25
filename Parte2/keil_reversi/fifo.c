@@ -1,6 +1,14 @@
 #include <LPC210X.h>                            // LPC21XX Peripheral Registers
 #include "fifo.h"
+//espacio variables
+EVENTO cqueue_arr[MAX];
+int front = -1;
+int rear = -1;
+// Variable para mantener un registro de estadísticas
+uint32_t estadisticasEventos[MAX];
+uint32_t eventosEncolados;
 
+//espacio codigo
 void FIFO_inicializar(GPIO_HAL_PIN_T pin_overflow) {
     front = 0;
     rear = 0;
@@ -26,8 +34,8 @@ uint8_t FIFO_extraer(EVENTO_T *ID_evento, uint32_t *auxData) {
 			power_hal_wait();
 			return 0;
 		}
-        ID_evento = &cqueue_arr[front].id; //aquí el compilador da error de no uso pero ns por qué
-        auxData = &cqueue_arr[front].aux;
+        *ID_evento = cqueue_arr[front].id; //aquí el compilador da error de no uso pero ns por qué
+        *auxData = cqueue_arr[front].aux;
         cqueue_arr[front].procesado = 1;
         front = (front + 1) % MAX;
 				eventosEncolados--;
