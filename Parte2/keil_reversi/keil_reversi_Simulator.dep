@@ -1,90 +1,0 @@
-Dependencies for Project 'keil_reversi', Target 'Simulator': (DO NOT MODIFY !)
-F (.\Startup.s)(0x65313C14)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips--pd "__UVISION_VERSION SETA 526"-o .\startup.o --depend .\startup.d)
-F (.\Retarget.c)(0x65313C14)(--c99 -c --cpu ARM7TDMI -D__EVAL -g -O3-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526"-o .\retarget.o --omf_browse .\retarget.crf --depend .\retarget.d)
-I (C:\Keil_v5\ARM\ARMCC\include\rt_misc.h)(0x599F2F9E)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-F (.\main.c)(0x65379C34)(--c99 -c --cpu ARM7TDMI -D__EVAL -g -O3-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526"-o .\main.o --omf_browse .\main.crf --depend .\main.d)
-I (C:\Keil_v5\ARM\INC\Philips\LPC210x.H)(0x559D2F68)
-I (fifo.h)(0x6539607E)
-I (gpio_hal.h)(0x6536BF38)
-I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x599F2F9E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (eventos.h)(0x6536BF38)
-I (io_reserva.h)(0x6536BF38)
-I (power_hal_wait.h)(0x6536BF38)
-I (temporizador_drv.h)(0x6536BF38)
-I (temporizador_hal.h)(0x6536BF38)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-F (.\Power_management.c)(0x65313C14)(--c99 -c --cpu ARM7TDMI -D__EVAL -g -O3-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526"-o .\power_management.o --omf_browse .\power_management.crf --depend .\power_management.d)
-I (C:\Keil_v5\ARM\INC\Philips\LPC210x.H)(0x559D2F68)
-F (.\Power_management.h)(0x65313C14)()
-F (.\boton_eint0.c)(0x65313C14)(--c99 -c --cpu ARM7TDMI -D__EVAL -g -O3-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526"-o .\boton_eint0.o --omf_browse .\boton_eint0.crf --depend .\boton_eint0.d)
-I (boton_eint0.h)(0x65313C14)
-I (C:\Keil_v5\ARM\INC\Philips\LPC210X.H)(0x559D2F68)
-F (.\boton_eint0.h)(0x65313C14)()
-F (.\timer0.c)(0x6536BF38)(--c99 -c --cpu ARM7TDMI -D__EVAL -g -O3-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526"-o .\timer0.o --omf_browse .\timer0.crf --depend .\timer0.d)
-F (.\timer0.h)(0x6536BF38)()
-F (.\temporizador_drv.h)(0x6536BF38)()
-F (.\temporizador_drv.c)(0x6536BF38)(--c99 -c --cpu ARM7TDMI -D__EVAL -g -O3-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526"-o .\temporizador_drv.o --omf_browse .\temporizador_drv.crf --depend .\temporizador_drv.d)
-I (C:\Keil_v5\ARM\INC\Philips\LPC210X.h)(0x559D2F68)
-I (temporizador_drv.h)(0x6536BF38)
-I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x599F2F9E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (temporizador_hal.h)(0x6536BF38)
-I (eventos.h)(0x6536BF38)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-F (.\temporizador_hal.h)(0x6536BF38)()
-F (.\temporizador_hal.c)(0x6536BF38)(--c99 -c --cpu ARM7TDMI -D__EVAL -g -O3-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526"-o .\temporizador_hal.o --omf_browse .\temporizador_hal.crf --depend .\temporizador_hal.d)
-I (C:\Keil_v5\ARM\INC\Philips\LPC210X.h)(0x559D2F68)
-I (temporizador_hal.h)(0x6536BF38)
-I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x599F2F9E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (eventos.h)(0x6536BF38)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-F (.\gpio_hal.h)(0x6536BF38)()
-F (.\io_reserva.h)(0x6536BF38)()
-F (.\fifo.h)(0x6539607E)()
-F (.\eventos.h)(0x6536BF38)()
-F (.\fifo.c)(0x65396193)(--c99 -c --cpu ARM7TDMI -D__EVAL -g -O3-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526"-o .\fifo.o --omf_browse .\fifo.crf --depend .\fifo.d)
-I (C:\Keil_v5\ARM\INC\Philips\LPC210X.h)(0x559D2F68)
-I (fifo.h)(0x6539607E)
-I (gpio_hal.h)(0x6536BF38)
-I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x599F2F9E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (eventos.h)(0x6536BF38)
-I (io_reserva.h)(0x6536BF38)
-I (power_hal_wait.h)(0x6536BF38)
-F (.\planificador.h)(0x6536BF38)()
-F (.\planificador.c)(0x6536BF38)(--c99 -c --cpu ARM7TDMI -D__EVAL -g -O3-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526"-o .\planificador.o --omf_browse .\planificador.crf --depend .\planificador.d)
-I (C:\Keil_v5\ARM\INC\Philips\LPC210X.h)(0x559D2F68)
-I (planificador.h)(0x6536BF38)
-I (fifo.h)(0x6539607E)
-I (gpio_hal.h)(0x6536BF38)
-I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x599F2F9E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (eventos.h)(0x6536BF38)
-I (io_reserva.h)(0x6536BF38)
-I (power_hal_wait.h)(0x6536BF38)
-I (hello_world.h)(0x6536C1EE)
-I (temporizador_drv.h)(0x6536BF38)
-I (temporizador_hal.h)(0x6536BF38)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-F (.\hello_world.h)(0x6536C1EE)()
-F (.\hello_world.c)(0x6536C1FB)(--c99 -c --cpu ARM7TDMI -D__EVAL -g -O3-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526"-o .\hello_world.o --omf_browse .\hello_world.crf --depend .\hello_world.d)
-I (C:\Keil_v5\ARM\INC\Philips\LPC210X.h)(0x559D2F68)
-I (hello_world.h)(0x6536C1EE)
-I (gpio_hal.h)(0x6536BF38)
-I (C:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x599F2F9E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (temporizador_drv.h)(0x6536BF38)
-I (temporizador_hal.h)(0x6536BF38)
-I (eventos.h)(0x6536BF38)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (fifo.h)(0x6539607E)
-I (io_reserva.h)(0x6536BF38)
-I (power_hal_wait.h)(0x6536BF38)
-F (.\power_hal_wait.c)(0x6536BF38)(--c99 -c --cpu ARM7TDMI -D__EVAL -g -O3-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526"-o .\power_hal_wait.o --omf_browse .\power_hal_wait.crf --depend .\power_hal_wait.d)
-I (C:\Keil_v5\ARM\INC\Philips\LPC210X.h)(0x559D2F68)
-I (power_hal_wait.h)(0x6536BF38)
-F (.\power_hal_wait.h)(0x6536BF38)()
