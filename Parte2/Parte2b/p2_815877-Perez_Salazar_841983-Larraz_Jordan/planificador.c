@@ -19,7 +19,7 @@ void planificador(void){
 	static uint32_t resTiempoFInal;
 	uint8_t cortar = 0;
 	while(1){
-		if (cortar < 20) {
+		if (cortar < 20000) {
 			while(FIFO_extraer(&aTratar, &data) < 1);
 			uint64_t res1 = temporizador_drv_leer();
 			hello_world_tick_tack();

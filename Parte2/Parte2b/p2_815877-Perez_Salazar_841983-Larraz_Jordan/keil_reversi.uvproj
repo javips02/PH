@@ -584,6 +584,21 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>GestorAlarmas</GroupName>
+          <Files>
+            <File>
+              <FileName>gestorAlarma.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\gestorAlarma.h</FilePath>
+            </File>
+            <File>
+              <FileName>gestorAlarma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\gestorAlarma.c</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>
