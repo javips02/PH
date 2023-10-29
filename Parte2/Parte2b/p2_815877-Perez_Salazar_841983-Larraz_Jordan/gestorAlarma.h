@@ -12,7 +12,8 @@ typedef struct {
 		uint32_t contador;
 } Alarma;
 
+static void alarma_inicializar();
 static void alarma_activar(EVENTO_T ID_evento, uint32_t retardo, uint32_t auxData);
-
+static void alarma_tratar_evento(); //llamada desde IRQ timer1
 
 #endif
