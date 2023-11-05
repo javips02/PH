@@ -1,0 +1,11 @@
+.\visualizar.o: visualizar.c
+.\visualizar.o: visualizar.h
+.\visualizar.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\visualizar.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\visualizar.o: temporizador_drv.h
+.\visualizar.o: temporizador_hal.h
+.\visualizar.o: eventos.h
+.\visualizar.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\visualizar.o: gpio_hal.h
+.\visualizar.o: C:\Keil_v5\ARM\INC\Philips\LPC210X.h
+.\visualizar.o: io_reserva.h

@@ -1,0 +1,13 @@
+.\gestoralarma.o: gestorAlarma.c
+.\gestoralarma.o: C:\Keil_v5\ARM\INC\Philips\LPC210X.h
+.\gestoralarma.o: gestorAlarma.h
+.\gestoralarma.o: temporizador_hal.h
+.\gestoralarma.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\gestoralarma.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\gestoralarma.o: eventos.h
+.\gestoralarma.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\gestoralarma.o: fifo.h
+.\gestoralarma.o: gpio_hal.h
+.\gestoralarma.o: io_reserva.h
+.\gestoralarma.o: power_hal_wait.h
+.\gestoralarma.o: temporizador_drv.h

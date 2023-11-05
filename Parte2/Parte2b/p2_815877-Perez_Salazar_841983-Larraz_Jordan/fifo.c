@@ -1,4 +1,4 @@
-#include <LPC210X.h>                            // LPC21XX Peripheral Registers
+	#include <LPC210X.h>                            // LPC21XX Peripheral Registers
 #include "fifo.h"
 static EVENTO cqueue_arr[MAX];
 int front = -1;
@@ -16,7 +16,6 @@ void FIFO_inicializar(GPIO_HAL_PIN_T pin_overflow) {
 }
 uint8_t FIFO_extraer(EVENTO_T *ID_evento, uint32_t *auxData) {
     if((eventosEncolados)==0){
-			power_hal_wait();
 			return 0;
 		}
         *ID_evento = cqueue_arr[front].id;
@@ -33,10 +32,10 @@ void FIFO_encolar(EVENTO_T ID_evento, uint32_t auxData) {
         gpio_hal_escribir(GPIO_OVERFLOW, GPIO_OVERFLOW_BITS, 1);
         while (1);
     }
-      rear = (rear + 1) % MAX;
 			cqueue_arr[rear].id = ID_evento;
 			cqueue_arr[rear].procesado = 0;
 			cqueue_arr[rear].aux = auxData;
+			rear = (rear + 1) % MAX;
 			estadisticasEventos[ID_evento]++;
 			eventosEncolados++;
     }

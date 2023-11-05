@@ -14,24 +14,38 @@ void planificador(void){
 	EVENTO_T aTratar;
 	uint32_t data;
 	FIFO_inicializar(GPIO_OVERFLOW);
-	hello_world_iniciar(GPIO_HELLO_WORLD, GPIO_HELLO_WORLD_BITS);
-	uint32_t res1 = temporizador_drv_leer();
-	static uint32_t resTiempoFInal;
-	uint8_t cortar = 0;
+	alarma_inicializar();
+	alarma_activar(POWER_DOWN, USUARIO_AUSENTE*1000, 0);
+	botones_ini();
+	temporizador_drv_iniciar();
+	temporizador_drv_empezar();
+	//hello_world_iniciar(GPIO_HELLO_WORLD, GPIO_HELLO_WORLD_BITS);
+	visualizar_inicializar(JUEGO, JUEGO_BITS);
+	juego_inicializar();
 	while(1){
-		if (cortar < 20000) {
-			while(FIFO_extraer(&aTratar, &data) < 1);
-			uint64_t res1 = temporizador_drv_leer();
-			hello_world_tick_tack();
-			cortar ++;
+		while(FIFO_extraer(&aTratar, &data) < 1){
+			power_hal_wait();
+		};
+			if(aTratar == TIMER1){
+				alarma_tratar_evento();
+			}
+			if(aTratar == POWER_DOWN){
+				power_hal_deep_sleep();
+			}
+			alarma_activar(POWER_DOWN, USUARIO_AUSENTE*1000, 0);
+		if(aTratar == ev_LATIDO){
+			hello_world_tratar_evento();
+		}	else if(aTratar == ev_VISUALIZAR_HELLO){
+				hello_world_tick_tack();
 		}
-		else{
-			uint64_t reloj = temporizador_drv_leer();
-			resTiempoFInal = reloj-res1;
-			uint32_t total = FIFO_estadisticas(IDVOID);
-			gpio_hal_sentido(GPIO_HELLO_WORLD, GPIO_HELLO_WORLD_BITS, GPIO_HAL_PIN_DIR_INPUT);
-			uint32_t n = gpio_hal_leer(GPIO_HELLO_WORLD, GPIO_HELLO_WORLD_BITS);
-			while(resTiempoFInal!=0);
+		else if(aTratar == ev_VISUALIZAR_CUENTA){
+			visualizar_jugar(JUEGO, JUEGO_BITS, data);
+		}
+		else if(aTratar == BOTON){
+			juego_tratar_evento(aTratar, 0);
+		}
+		else if(aTratar == BOTON_TEMPORIZADOR){
+			comprobarEstado();
 		}
 	}
 }

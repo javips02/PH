@@ -1,0 +1,16 @@
+#ifndef INT_EXTERNAS_HAL_H
+#define INT_EXTERNAS_HAL_H
+#include "eventos.h"
+#include "fifo.h"
+#include <stddef.h>
+static void (*callbackToPulsacion)(uint32_t)=NULL;
+void eint_init (void (*funcion_pulsar_boton)());
+void habilitar_irq_eint1(void);
+unsigned int estaPulsadoEint1(void);
+
+void habilitar_irq_eint2(void);
+unsigned int estaPulsadoEint2(void);
+
+
+#endif
+

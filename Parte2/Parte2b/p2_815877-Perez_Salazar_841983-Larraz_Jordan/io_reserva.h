@@ -8,4 +8,7 @@
 #define GPIO_HELLO_WORLD  0
 #define GPIO_HELLO_WORLD_BITS  8
 
+#define JUEGO 16
+#define JUEGO_BITS 8
+
 #endif
