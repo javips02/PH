@@ -1,6 +1,5 @@
 #include <LPC210X.h>                            // LPC21XX Peripheral Registers
 #include "int_externas_hal.h"
-// variable que se activa al detectar una nueva pulsación
 
 void eint1_ISR (void) __irq;
 void eint2_ISR (void) __irq;
@@ -17,8 +16,8 @@ void eint_init (void (*funcion_pulsar_boton)(uint32_t)){
 	PINSEL0 		= PINSEL0 & 0xcfffffff;	//Sets bits 0 and 1 to 0
 	PINSEL0 		= PINSEL0 | 0x20000000;					//Enable the EXTINT0 interrupt
 	VICVectCntl2 = 0x20 | 15;                   
-  //VICIntEnable = VICIntEnable | 0x00008000;                  // Enable EXTINT0 Interrupt
-		//eint2_nueva_pulsacion = 0;
+	//VICIntEnable = VICIntEnable | 0x00008000;                  // Enable EXTINT0 Interrupt
+	//eint2_nueva_pulsacion = 0;
 	EXTINT =  EXTINT | 4;        // clear interrupt flag     	
 	VICVectAddr3 = (unsigned long)eint2_ISR;  
 	PINSEL0 		= PINSEL0 & 0x3fffffff;	//Sets bits 0 and 1 to 0
@@ -57,7 +56,6 @@ void eint1_ISR (void) __irq {
 	EXTINT =  EXTINT | 2;        // clear interrupt flag        
 	VICVectAddr = 0;             // Acknowledge Interrupt
 	callbackToPulsacion(EINT1);
-
 }
 
 void eint2_ISR (void) __irq {

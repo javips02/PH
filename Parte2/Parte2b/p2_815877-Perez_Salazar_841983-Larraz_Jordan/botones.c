@@ -3,7 +3,7 @@
 
 void botones_ini(void){
 	void (*funcion_callback)(uint32_t) = esPulsado;
-	eint_init(funcion_callback);
+	eint_init(funcion_callback); //REVISAR
 }
 
 void esPulsado(uint32_t id_boton){
@@ -24,9 +24,11 @@ void esPulsado(uint32_t id_boton){
 void comprobarEstado(void){
 		if(estaPulsadoEint1()==0){
 			habilitar_irq_eint1();
+			//eliminar alarma
 		}	
 		else if(estaPulsadoEint2()==0){
 			habilitar_irq_eint2();
+			//eliminar alarma
 	}
 }
 
