@@ -4,27 +4,23 @@
 void eint1_ISR (void) __irq;
 void eint2_ISR (void) __irq;
 
-void eint_init (void (*funcion_pulsar_boton)(uint32_t)){
-	//eint1_nueva_pulsacion = 0;
-	EXTINT =  EXTINT | 2;        // clear interrupt flag     	
-	// configuration of the IRQ slot number 2 of the VIC for EXTINT0
-	VICVectAddr2 = (unsigned long)eint1_ISR; 
-	// set interrupt vector in 0
-    // 0x20 bit 5 enables vectored IRQs. 
+void eint_init (void (*funcion_pulsar_boton)(uint32_t)) {
 	callbackToPulsacion = funcion_pulsar_boton;
-		// 14 is the number of the interrupt assigned. Number 14 is the EINT0 (see table 40 of the LPC2105 user manual  
-	PINSEL0 		= PINSEL0 & 0xcfffffff;	//Sets bits 0 and 1 to 0
-	PINSEL0 		= PINSEL0 | 0x20000000;					//Enable the EXTINT0 interrupt
-	VICVectCntl2 = 0x20 | 15;                   
-	//VICIntEnable = VICIntEnable | 0x00008000;                  // Enable EXTINT0 Interrupt
-	//eint2_nueva_pulsacion = 0;
-	EXTINT =  EXTINT | 4;        // clear interrupt flag     	
-	VICVectAddr3 = (unsigned long)eint2_ISR;  
-	PINSEL0 		= PINSEL0 & 0x3fffffff;	//Sets bits 0 and 1 to 0
-	PINSEL0 		= PINSEL0 | 0x80000000;					//Enable the EXTINT0 interrupt
-	VICVectCntl2 = 0x20 | 16;                   
-  VICIntEnable = VICIntEnable | 0x00018000;   
+	EXTINT =  EXTINT | 2;        // clear interrupt flag (para todas las extint)    	
+	VICVectAddr3 = (unsigned long)eint1_ISR;          // set interrupt vector in 1
+	PINSEL0 = PINSEL0 & 0xcfffffff;			//Pone bits 31,30,29,28 a 0 (EXTINT 1 y 2) (Table 56 LPC manual) (primero a 0 y después asignar valor)
+  PINSEL0 = PINSEL0 | 0x20000000;			// Pone bits 31,30,29,28 a 1,0,1,0 respectivamente (Table 56)
+	VICVectCntl3 = 0x20 | 14;  					//Ponemos el bit 7 del VICVectCntl2 a 2, para prio IRQ2 (EINT1)
+
+	EXTINT =  EXTINT | 4;
+	VICVectAddr4 = (unsigned long)eint2_ISR;					// set interrupt vector in 2
+	PINSEL0 = PINSEL0 & 0x3fffffff;	
+  PINSEL0 = PINSEL0 | 0x80000000;
+	VICVectCntl4 = 0x20 | 14;	 // Misma prio para el 3 (EINT2) Como ambas tienen misma prio, se atiende por orden de llegada (creo)
+	
+  VICIntEnable = VICIntEnable | 0x00018000;                  // Enable EXTINT0 Interrupt
 }
+
 
 unsigned int estaPulsadoEint1(void){
 	EXTINT =  EXTINT | 2; 

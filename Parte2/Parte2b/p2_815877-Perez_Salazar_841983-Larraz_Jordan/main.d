@@ -13,6 +13,8 @@
 .\main.o: temporizador_hal.h
 .\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\main.o: gestorAlarma.h
+.\main.o: botones.h
+.\main.o: int_externas_hal.h
 .\main.o: visualizar.h
 .\main.o: juego.h
 .\main.o: Power_management.h

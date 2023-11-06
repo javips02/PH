@@ -13,5 +13,7 @@
 .\planificador.o: temporizador_hal.h
 .\planificador.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\planificador.o: gestorAlarma.h
+.\planificador.o: botones.h
+.\planificador.o: int_externas_hal.h
 .\planificador.o: visualizar.h
 .\planificador.o: juego.h

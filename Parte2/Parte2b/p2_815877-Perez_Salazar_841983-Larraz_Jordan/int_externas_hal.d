@@ -8,3 +8,4 @@
 .\int_externas_hal.o: gpio_hal.h
 .\int_externas_hal.o: io_reserva.h
 .\int_externas_hal.o: power_hal_wait.h
+.\int_externas_hal.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

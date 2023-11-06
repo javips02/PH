@@ -2,10 +2,14 @@
 .\botones.o: C:\Keil_v5\ARM\INC\Philips\LPC210X.h
 .\botones.o: botones.h
 .\botones.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\botones.o: eventos.h
 .\botones.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
 .\botones.o: gestorAlarma.h
+.\botones.o: temporizador_drv.h
 .\botones.o: temporizador_hal.h
+.\botones.o: eventos.h
 .\botones.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\botones.o: fifo.h
+.\botones.o: gpio_hal.h
+.\botones.o: io_reserva.h
+.\botones.o: power_hal_wait.h
 .\botones.o: int_externas_hal.h

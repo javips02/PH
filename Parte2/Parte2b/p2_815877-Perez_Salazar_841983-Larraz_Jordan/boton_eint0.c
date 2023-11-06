@@ -41,6 +41,7 @@ void eint0_init (void) {
     // 0x20 bit 5 enables vectored IRQs. 
 		// 14 is the number of the interrupt assigned. Number 14 is the EINT0 (see table 40 of the LPC2105 user manual  
 	PINSEL1 		= PINSEL1 & 0xfffffffC;	//Sets bits 0 and 1 to 0
+	
 	PINSEL1 		= PINSEL1 | 1;					//Enable the EXTINT0 interrupt
 	VICVectCntl2 = 0x20 | 14;                   
   VICIntEnable = VICIntEnable | 0x00004000;                  // Enable EXTINT0 Interrupt
