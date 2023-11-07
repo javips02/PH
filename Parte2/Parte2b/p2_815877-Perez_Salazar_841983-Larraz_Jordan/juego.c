@@ -1,6 +1,6 @@
 #include "juego.h"
 
-uint32_t cuentaJuego, intervalo;
+static uint32_t cuentaJuego, intervalo;
 static uint32_t Tini = 0;
 void juego_inicializar(void){
     cuentaJuego=0;

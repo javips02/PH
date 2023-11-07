@@ -10,13 +10,13 @@ void eint_init (void (*funcion_pulsar_boton)(uint32_t)) {
 	VICVectAddr3 = (unsigned long)eint1_ISR;          // set interrupt vector in 1
 	PINSEL0 = PINSEL0 & 0xcfffffff;			//Pone bits 31,30,29,28 a 0 (EXTINT 1 y 2) (Table 56 LPC manual) (primero a 0 y después asignar valor)
   PINSEL0 = PINSEL0 | 0x20000000;			// Pone bits 31,30,29,28 a 1,0,1,0 respectivamente (Table 56)
-	VICVectCntl3 = 0x20 | 14;  					//Ponemos el bit 7 del VICVectCntl2 a 2, para prio IRQ2 (EINT1)
+	VICVectCntl3 = 0x20 | 15;  					//Ponemos el bit 7 del VICVectCntl2 a 2, para prio IRQ2 (EINT1)
 
 	EXTINT =  EXTINT | 4;
 	VICVectAddr4 = (unsigned long)eint2_ISR;					// set interrupt vector in 2
 	PINSEL0 = PINSEL0 & 0x3fffffff;	
   PINSEL0 = PINSEL0 | 0x80000000;
-	VICVectCntl4 = 0x20 | 14;	 // Misma prio para el 3 (EINT2) Como ambas tienen misma prio, se atiende por orden de llegada (creo)
+	VICVectCntl4 = 0x20 | 16;	 // Misma prio para el 3 (EINT2) Como ambas tienen misma prio, se atiende por orden de llegada (creo)
 	
   VICIntEnable = VICIntEnable | 0x00018000;                  // Enable EXTINT0 Interrupt
 }

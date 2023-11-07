@@ -25,13 +25,13 @@ void planificador(void){
 	while(1){
 		while(FIFO_extraer(&aTratar, &data) < 1){
 			//power_hal_wait();
-		};
-			if(aTratar == TIMER1){
-				alarma_tratar_evento();
-			}
-			if(aTratar == POWER_DOWN){
-				//power_hal_deep_sleep();
-			}
+		}
+		if(aTratar == TIMER1){
+			alarma_tratar_evento();
+		}
+		if(aTratar == POWER_DOWN){
+			//power_hal_deep_sleep();
+		}
 		//	alarma_activar(POWER_DOWN, USUARIO_AUSENTE*1000, 0);
 		if(aTratar == ev_LATIDO){
 			hello_world_tratar_evento();
@@ -45,7 +45,7 @@ void planificador(void){
 			juego_tratar_evento(aTratar, 0);
 		}
 		else if(aTratar == BOTON_TEMPORIZADOR){
-			comprobarEstado();
+			botones_comprobarEstado();
 		}
 	}
 }

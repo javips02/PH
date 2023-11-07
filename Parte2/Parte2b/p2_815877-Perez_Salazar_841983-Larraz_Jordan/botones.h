@@ -9,7 +9,7 @@
 
 void esPulsado(uint32_t id_boton);
 void botones_ini(void);
-void comprobarEstado(void);
+void botones_comprobarEstado(void);
 
 
 #endif
