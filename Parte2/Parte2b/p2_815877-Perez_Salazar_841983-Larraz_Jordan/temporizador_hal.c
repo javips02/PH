@@ -4,12 +4,12 @@
 
 //Definiciones de varibales
 
-static volatile uint64_t timer0_int_count; // nï¿½mero de interrupciones
+static volatile uint64_t timer0_int_count; // número de interrupciones
 static volatile uint64_t timer1_int_count;
 
 
-void timer0_ISR (void) __irq;    // Generar interrupciï¿½n
-void timer1_ISR (void) __irq;    // Generar interrupciï¿½n
+void timer0_ISR (void) __irq;    // Generar interrupción
+void timer1_ISR (void) __irq;    // Generar interrupción
 
 /* Setup the Timer Counter 0 Interrupt */
 void temporizador_hal_iniciar (void) {
@@ -17,8 +17,8 @@ void temporizador_hal_iniciar (void) {
 		timer1_int_count=0;
 		// configuration of Timer 0
 		T0PR = 0;
-		T0MR0 = 0xFFFFFFFE;  								// 1mSec= 15000 - 1 counts .... Menos valor == interupciones mï¿½s seguidas
-    	T0MCR = 3;                     // Generates an interrupt and resets the count when the value in ticks of MR0 is reached
+		T0MR0 = 0xFFFFFFFE;  								// 1mSec= 15000 - 1 counts .... Menos valor == interupciones más seguidas
+    T0MCR = 3;                     // Generates an interrupt and resets the count when the value in ticks of MR0 is reached
 		// configuration of the IRQ slot number 0 of the VIC for Timer 0 Interrupt
 		VICVectAddr0 = (unsigned long)timer0_ISR;          // set interrupt vector in 0
     // 0x20 bit 5 enables vectored IRQs. 
@@ -33,29 +33,29 @@ void temporizador_hal_empezar(void){
 }
 
 uint64_t temporizador_hal_leer(void){
-		//return timer0_int_count ;//*T0MR0 + T0TC; Estamos contando sï¿½lamente ticks, no?
+		//return timer0_int_count ;//*T0MR0 + T0TC; Estamos contando sólamente ticks, no?
 	return timer0_int_count * (T0MR0+1) + T0TC;
 }
 
 uint64_t temporizador_hal_parar(void){
-	T0TCR = 3;
-	T0TCR = 0; // When zero, the counters are disabled.
-	return temporizador_hal_leer();
+			T0TCR = 3;
+			T0TCR = 0; // When zero, the counters are disabled.
+			return temporizador_hal_leer();
 }
 
 /* Timer Counter 0 Interrupt executes each 10ms @ 60 MHz CPU Clock */
 void timer0_ISR (void) __irq {
     timer0_int_count++;
-    T0IR = 1;                              // Bajar flag (interrupciï¿½n manejada)
-    VICVectAddr = 0;                            // Volvemos a activar VIC para atender prï¿½ximas interrupciones
+    T0IR = 1;                              // Bajar flag (interrupción manejada)
+    VICVectAddr = 0;                            // Volvemos a activar VIC para atender próximas interrupciones
 }
 void timer1_ISR (void) __irq {
     //timer1_int_count++;
 	if (callbackToDRV != NULL) {
 		callbackToDRV();
 	}
-    T1IR = 1;                              // Bajar flag (interrupciï¿½n manejada)
-    VICVectAddr = 0;                            // Volvemos a activar VIC para atender prï¿½ximas interrupciones
+    T1IR = 1;                              // Bajar flag (interrupción manejada)
+    VICVectAddr = 0;                            // Volvemos a activar VIC para atender próximas interrupciones
 }
 
 unsigned int timer0_read_int_count(void){

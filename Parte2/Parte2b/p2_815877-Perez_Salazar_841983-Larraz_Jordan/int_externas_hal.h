@@ -4,7 +4,7 @@
 #include "fifo.h"
 #include <stddef.h>
 static void (*callbackToPulsacion)(uint32_t)=NULL;
-void eint_init (void (*funcion_pulsar_boton)());
+void eint_init (void (*funcion_pulsar_boton)(uint32_t));
 void habilitar_irq_eint1(void);
 unsigned int estaPulsadoEint1(void);
 

@@ -10,7 +10,7 @@ typedef struct {
 		uint8_t enUso;
 		uint32_t retardo;
 		uint32_t auxData;
-		uint32_t esPeriodica;
+		uint8_t esPeriodica;
 		uint32_t contador;
 } Alarma;
 

@@ -6,8 +6,7 @@ static Alarma AlarmasPosibles[MAX_ALARMAS];
 void alarma_inicializar(void){
 	for (int i =0;i<MAX_ALARMAS;i++){
 		AlarmasPosibles[i].enUso = 0;
-		AlarmasPosibles[i].id = IDVOID;
-}
+	}
 	
 	void (*funcion_encolar_evento)(EVENTO_T, uint32_t) = FIFO_encolar;
 	temporizador_drv_reloj(1,funcion_encolar_evento, TIMER1);
@@ -38,7 +37,7 @@ void alarma_activar(EVENTO_T ID_evento, uint32_t retardo, uint32_t auxData){
 		
 		AlarmasPosibles[indice].id = ID_evento;
 		if(retardo == 0){
-			AlarmasPosibles[indice].enUso=0;
+		AlarmasPosibles[indice].enUso=0;
 		}else{
 			AlarmasPosibles[indice].enUso = 1;
 		}
@@ -63,4 +62,5 @@ void alarma_tratar_evento(void) {
 		}
 	}
 }
+
 

@@ -21,5 +21,5 @@ void hello_world_tick_tack(void){
 		cuenta++;
 }
 void hello_world_tratar_evento(void){
-	FIFO_encolar(ev_VISUALIZAR_HELLO,cuenta);
+	FIFO_encolar(ev_VISUALIZAR_HELLO,0);
 }
