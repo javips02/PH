@@ -28,7 +28,7 @@ uint8_t FIFO_extraer(EVENTO_T *ID_evento, uint32_t *auxData) {
 }
 
 void FIFO_encolar(EVENTO_T ID_evento, uint32_t auxData) {
-		if ((eventosEncolados) > 32) { // if cola llena
+		if ((eventosEncolados) > MAX) { // if cola llena
         gpio_hal_escribir(GPIO_OVERFLOW, GPIO_OVERFLOW_BITS, 1);
         while (1);
     }

@@ -15,6 +15,7 @@
 
 void planificadorOverflow(void);	
 void planificador(void);	
-
+void planificadorPD(void);
+void planificador_Alarm_OF(void);
 
 #endif
