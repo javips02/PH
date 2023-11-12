@@ -39,6 +39,8 @@ SWI_Handler
 				CMP     R12,#0xFD             
                 BEQ     __disable_fiq
 				
+				CMP     R12,#0xFC             
+                BEQ     __read_IRQ_bit
 
                 LDR     R8, SWI_Count
                 CMP     R12, R8
@@ -57,7 +59,7 @@ SWI_Dead        B       SWI_Dead               ; None Existing SWI
 SWI_Cnt         EQU    (SWI_End-SWI_Table)/4
 SWI_Count       DCD     SWI_Cnt
 
-                IMPORT  __SWI_0
+                IMPORT  __SWI_0					; tick_getus decalrada en el módulo temporizador_drv.h
 ;               IMPORT  __SWI_1
 ;               IMPORT  __SWI_2
 ;               IMPORT  __SWI_3
@@ -78,14 +80,38 @@ __decrease_var
                 LDMFD   SP!, {R8, R12}         ; Load R8, SPSR
                 MSR     SPSR_cxsf, R12         ; Set SPSR
                 LDMFD   SP!, {R12, PC}^        ; Restore R12 and Return
-				
-__read_IRQ_bit
-                MRS r0, SPSR
-				CMP r0, #I_Bit
-				MOVEQ r0, #0
-				MOVNE r0, #1
-                LDMFD   SP!, {R12, PC}^        ; Restore R12 and Return
 
+__read_IRQ_bit
+				MRS R0, SPSR        ; Mueve el contenido del registro SPSR a R0 
+				AND R0, R0, #I_Bit  ; Realiza una operación AND para aislar el bit IRQ
+				CMP R0, #0          ; Compara el resultado con 0 (IRQ's activadas porque flag a 0)
+				MOVEQ R0, #0		; return 0 si estan activadas
+				MOVNE r0, #1		; return 1 si estan desactivadas
+				LDMFD   SP!, {R8, R12}         ; Load R8, SPSR
+                MSR     SPSR_cxsf, R12         ; Set SPSR
+                LDMFD   SP!, {R12, PC}^        ; Restore R12 and Return
+				; En el caso de esta funcion, devolvemos el resultado en r0 (un 0 si estan activadas, un 1 si estan desactivadas, copiando el signiicado del flag)
+
+__enable_irq
+				MRS R8, SPSR        ; Mueve el contenido del registro SPSR a R8 
+				BIC R8, R8, #I_Bit  ; Realiza una operación BIC para borrar el bit IRQ en R8
+				MSR SPSR_cxsf, R8       ; Establece el nuevo valor de CPSR con el bit IRQ borrado
+				LDMFD SP!, {R8, R12}    ; Load R8, SPSR (restaurar pila antes de volver) (en este caso, el spsr lo hemos modificado ya con lo que nos interesaba, por lo que no lo restauramos)
+                LDMFD   SP!, {R12, PC}^        ; Restore R12 and Return
+				
+__disable_irq
+				MRS R8, SPSR        ; Mueve el contenido del registro SPSR a R8 
+				ORR R8, R8, #I_Bit  ; Realiza una operación BIC para levantar el bit IRQ en R8
+				MSR SPSR_cxsf, R8       ; Establece el nuevo valor de CPSR con el bit IRQ levantado
+				LDMFD SP!, {R8, R12}    ; Load R8, SPSR (restaurar pila antes de volver) (en este caso, el spsr lo hemos modificado ya con lo que nos interesaba, por lo que no lo restauramos)
+                LDMFD   SP!, {R12, PC}^        ; Restore R12 and Return
+				
+__disable_fiq
+				MRS R8, SPSR        ; Mueve el contenido del registro SPSR a R8 
+				ORR R8, R8, #F_Bit  ; Realiza una operación BIC para levantar el bit IRQ en R8
+				MSR SPSR_cxsf, R8       ; Establece el nuevo valor de CPSR con el bit FIQ levantado
+				LDMFD SP!, {R8, R12}    ; Load R8, SPSR (restaurar pila antes de volver) (en este caso, el spsr lo hemos modificado ya con lo que nos interesaba, por lo que no lo restauramos)
+                LDMFD   SP!, {R12, PC}^        ; Restore R12 and Return
 
                 END
 

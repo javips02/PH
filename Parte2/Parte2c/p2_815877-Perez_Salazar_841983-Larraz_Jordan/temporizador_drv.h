@@ -8,11 +8,10 @@
 //extern void (*encolarDRV)(EVENTO_T, uint32_t);
 
 
-void temporizador_drv_iniciar(void);
-void temporizador_drv_empezar(void);
+void temporizador_drv_iniciar(void); //Inicializar cronos (todos ellos)
+void temporizador_drv_empezar(void); //Empeazar conteo en todos los cronos
 
-
-uint64_t temporizador_drv_parar(void);
-void temporizador_drv_reloj (uint32_t periodo, void (*funcion_encolar_evento)(), EVENTO_T ID_evento);
-uint32_t __swi(0) clock_get_us(void);
+uint64_t temporizador_drv_parar(void); 
+void temporizador_drv_reloj (uint32_t periodo, void (*funcion_encolar_evento)(), EVENTO_T ID_evento); //Programar timer1 para que interrumpa cada "periodo" ms, acceda a la funcion encolar y encole
+uint32_t __swi(0) clock_getus(void); //Sustituta de temporizador_drv_leer, pero con llamada al sistema
 #endif

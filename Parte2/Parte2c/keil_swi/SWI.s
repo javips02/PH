@@ -71,6 +71,5 @@ __decrease_var
                 MSR     SPSR_cxsf, R12         ; Set SPSR
                 LDMFD   SP!, {R12, PC}^        ; Restore R12 and Return
 
-
                 END
 
