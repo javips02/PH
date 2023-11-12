@@ -15,6 +15,8 @@ void FIFO_inicializar(GPIO_HAL_PIN_T pin_overflow) {
 		eventosEncolados=0;
 }
 uint8_t FIFO_extraer(EVENTO_T *ID_evento, uint32_t *auxData) {
+	//deshabilitar irqs
+	
     if((eventosEncolados)==0){
 			return 0;
 		}
@@ -28,6 +30,7 @@ uint8_t FIFO_extraer(EVENTO_T *ID_evento, uint32_t *auxData) {
 }
 
 void FIFO_encolar(EVENTO_T ID_evento, uint32_t auxData) {
+	
 		if ((eventosEncolados) > MAX) { // if cola llena
         gpio_hal_escribir(GPIO_OVERFLOW, GPIO_OVERFLOW_BITS, 1);
         while (1);

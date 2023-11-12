@@ -649,6 +649,21 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>SWI</GroupName>
+          <Files>
+            <File>
+              <FileName>swi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\swi.h</FilePath>
+            </File>
+            <File>
+              <FileName>SWI.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\SWI.s</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>

@@ -5,12 +5,11 @@
 #include "gestorAlarma.h"
 #include "int_externas_hal.h"
 
-static uint8_t estado1=0;
-static uint8_t estado2=0;
+
 
 void esPulsado(uint32_t id_boton);
 void botones_ini(void);
-void comprobarEstado(void);
+void botones_comprobarEstado(void);
 
 
 #endif

@@ -1,9 +1,11 @@
 #include "juego.h"
 
 static uint32_t cuentaJuego, intervalo;
+static uint32_t Tini = 0;
 void juego_inicializar(void){
     cuentaJuego=0;
     intervalo=0;
+		Tini = temporizador_drv_leer();
 }
 
 void juego_tratar_evento(EVENTO_T ID_Evento, uint32_t auxData){
@@ -13,6 +15,7 @@ void juego_tratar_evento(EVENTO_T ID_Evento, uint32_t auxData){
         cuentaJuego--;
     }
 		FIFO_encolar(ev_VISUALIZAR_CUENTA, cuentaJuego);
-    intervalo = temporizador_drv_leer() - intervalo; //update intervalo
+    intervalo = temporizador_drv_leer() - Tini - intervalo; //update intervalo
+		//meter anterior para más eficiente
 }
 

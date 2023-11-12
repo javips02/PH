@@ -32,3 +32,6 @@ void temporizador_drv_reloj (uint32_t periodo, void (*funcion_encolar_evento)(),
 	temporizador_hal_reloj(periodo, funcion_callback_ptr);
 }
 
+uint32_t __SWI_0 (void){
+	return temporizador_drv_leer();
+}
