@@ -13,6 +13,6 @@ void juego_tratar_evento(EVENTO_T ID_Evento, uint32_t auxData){
         cuentaJuego--;
     }
 		FIFO_encolar(ev_VISUALIZAR_CUENTA, cuentaJuego);
-    intervalo = temporizador_drv_leer() - intervalo; //update intervalo
+    intervalo = clock_getus() - intervalo; //update intervalo
 }
 

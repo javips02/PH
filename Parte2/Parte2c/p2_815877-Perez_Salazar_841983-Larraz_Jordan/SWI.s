@@ -1,4 +1,4 @@
-q;/*****************************************************************************/
+;/*****************************************************************************/
 ;/* SWI.S: SWI Handler                                                        */
 ;/*****************************************************************************/
 ;/* This file is part of the uVision/ARM development tools.                   */
@@ -7,7 +7,8 @@ q;/*****************************************************************************
 ;/* end user licence from KEIL for a compatible version of KEIL software      */
 ;/* development tools. Nothing else gives you the right to use this software. */
 ;/*****************************************************************************/
-I_Bit           EQU     0x80   
+I_Bit           EQU     0x80  
+F_Bit			EQU		0x40 ;mirar a a ver si se puede	hacer con extern , porque ya estan decalradas en el startup.h
 T_Bit           EQU     0x20
 
                 PRESERVE8                      ; 8-Byte aligned Stack
@@ -27,8 +28,6 @@ SWI_Handler
                 BICEQ   R12, R12, #0xFF000000  ; Extract SWI Number
 
 ; add code to enable/disable the global IRQ flag
-                //CMP     R12,#0xFF              
-                //BEQ     __decrease_var
 				
 				CMP     R12,#0xFF              
                 BEQ     __enable_irq
@@ -71,15 +70,6 @@ SWI_Table
 
 ;               ...
 SWI_End
-
-__decrease_var
-                LDR R8, =shared_var
-				LDR R12, [r8]
-                SUB R12, R12, #1
-                STR R12, [R8]
-                LDMFD   SP!, {R8, R12}         ; Load R8, SPSR
-                MSR     SPSR_cxsf, R12         ; Set SPSR
-                LDMFD   SP!, {R12, PC}^        ; Restore R12 and Return
 
 __read_IRQ_bit
 				MRS R0, SPSR        ; Mueve el contenido del registro SPSR a R0 
