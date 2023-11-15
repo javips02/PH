@@ -142,7 +142,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGDARM</Key>
-          <Name>(134=-1,-1,-1,-1,0)(135=-1,-1,-1,-1,0)(107=1499,202,1830,530,1)(108=-1,-1,-1,-1,0)(106=994,204,1272,558,0)(105=1169,1,1359,245,1)(80=1264,528,1775,938,1)(104=532,456,848,875,0)(100=1170,1,1753,183,1)(113=220,244,718,767,0)(112=220,190,718,900,0)(136=-1,-1,-1,-1,0)(117=-1,-1,-1,-1,0)(110=914,367,1440,822,0)(111=914,333,1440,788,0)(114=277,433,963,881,0)(115=-1,-1,-1,-1,0)(116=790,303,1076,593,0)</Name>
+          <Name>(134=-1,-1,-1,-1,0)(135=-1,-1,-1,-1,0)(107=1139,202,1470,530,1)(108=-1,-1,-1,-1,0)(106=994,204,1272,558,0)(105=1169,1,1359,245,1)(80=959,510,1470,920,1)(104=532,456,848,875,0)(100=887,1,1470,183,0)(113=220,244,718,767,0)(112=220,190,718,900,0)(136=-1,-1,-1,-1,0)(117=-1,-1,-1,-1,0)(110=914,367,1440,822,0)(111=914,333,1440,788,0)(114=277,433,963,881,0)(115=-1,-1,-1,-1,0)(116=790,303,1076,593,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -153,6 +153,22 @@
       <Breakpoint>
         <Bp>
           <Number>0</Number>
+          <Type>0</Type>
+          <LineNumber>8</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>584</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
           <Type>0</Type>
           <LineNumber>0</LineNumber>
           <EnabledFlag>1</EnabledFlag>
@@ -168,7 +184,7 @@
           <Expression>0x00000000</Expression>
         </Bp>
         <Bp>
-          <Number>1</Number>
+          <Number>2</Number>
           <Type>0</Type>
           <LineNumber>0</LineNumber>
           <EnabledFlag>1</EnabledFlag>
@@ -184,11 +200,43 @@
           <Expression>0x000000AC</Expression>
         </Bp>
         <Bp>
-          <Number>2</Number>
+          <Number>3</Number>
           <Type>0</Type>
           <LineNumber>10</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>556</Address>
+          <Address>592</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\keil_reversi\main.c\10</Expression>
+        </Bp>
+        <Bp>
+          <Number>4</Number>
+          <Type>0</Type>
+          <LineNumber>12</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>608</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>5</Number>
+          <Type>0</Type>
+          <LineNumber>13</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>612</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
