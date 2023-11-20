@@ -16,8 +16,9 @@ void FIFO_inicializar(GPIO_HAL_PIN_T pin_overflow) {
 }
 uint8_t FIFO_extraer(EVENTO_T *ID_evento, uint32_t *auxData) {
 	//deshabilitar irqs
-	
+	disable_irq();
     if((eventosEncolados)==0){
+			enable_irq();
 			return 0;
 		}
         *ID_evento = cqueue_arr[front].id;
@@ -26,6 +27,7 @@ uint8_t FIFO_extraer(EVENTO_T *ID_evento, uint32_t *auxData) {
         front = (front + 1) % MAX;
 				eventosEncolados--;
 				totalAtendidos++;
+				enable_irq();
         return 1;
 }
 

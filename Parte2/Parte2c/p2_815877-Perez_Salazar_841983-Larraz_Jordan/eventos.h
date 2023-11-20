@@ -14,6 +14,8 @@ typedef enum {
 	ALARMA_OVERFLOW = 8,
 	BOTON = 9,
 	BOTON_TEMPORIZADOR=10,
+	ev_RX_SERIE=11,
+	ev_TX_SERIE=12
 }EVENTO_T;
 
 #endif

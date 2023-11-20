@@ -16,6 +16,7 @@ void planificador(void){
 	FIFO_inicializar(GPIO_OVERFLOW);
 	alarma_inicializar();
 	alarma_activar(POWER_DOWN, USUARIO_AUSENTE*1000, 0);
+	uart0_drv_iniciar(FIFO_encolar);
 	botones_ini();
 	temporizador_drv_iniciar();
 	temporizador_drv_empezar();
@@ -34,7 +35,6 @@ void planificador(void){
 				power_hal_deep_sleep();
 				iniciada = 1;
 			}
-			
 		if(aTratar == ev_LATIDO){
 			hello_world_tratar_evento();
 		}	else if(aTratar == ev_VISUALIZAR_HELLO){
@@ -54,8 +54,20 @@ void planificador(void){
 		else if(aTratar == BOTON_TEMPORIZADOR){
 			comprobarEstado();
 		}
+		else if(aTratar==ev_RX_SERIE){
+			juego_tratar_evento(aTratar, data);
+			
+		}
 	}
 }
+
+
+
+
+
+
+
+
 void planificador_Alarm_OF(void){ //Overflow
 	FIFO_inicializar(GPIO_OVERFLOW);
 	alarma_inicializar();

@@ -9,6 +9,7 @@
 #include "gestorAlarma.h"
 #include "visualizar.h"
 #include "juego.h"
+#include "linea_serie_drv.h"
 
 
 #define USUARIO_AUSENTE 12

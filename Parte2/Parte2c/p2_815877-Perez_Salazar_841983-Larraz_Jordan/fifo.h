@@ -5,6 +5,7 @@
 #include "eventos.h"
 #include "io_reserva.h"
 #include "power_hal_wait.h"
+#include "swi.h"
 #include <stdint.h>
 
 #define MAX 32 //mover a io_reserva
