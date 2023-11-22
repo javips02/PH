@@ -7,11 +7,14 @@ static uint8_t indice;
 static void (*encolar)()=NULL;
 static uint8_t bufferEnvios[100];
 static uint8_t indice_envios;
-void uart0_drv_iniciar(void (*funcion_encolar_evento)()){//// el ioreserva solo lo tiene el planificador
+static uint32_t evento_uart, evento_uart_bits;
+void uart0_drv_iniciar(void (*funcion_encolar_evento)(), uint32_t evento, uint32_t evento_bits){//// el ioreserva solo lo tiene el planificador
 	estado = 0;
 	indice = 0;
-	gpio_hal_sentido(GPIO_SERIE_ERROR, GPIO_SERIE_ERROR_BITS, GPIO_HAL_PIN_DIR_OUTPUT);
-	gpio_hal_escribir(GPIO_SERIE_ERROR, GPIO_SERIE_ERROR_BITS, 0);
+	evento_uart = evento;
+	evento_uart_bits=evento_bits;
+	gpio_hal_sentido(evento, evento_bits, GPIO_HAL_PIN_DIR_OUTPUT);
+	gpio_hal_escribir(evento, evento_bits, 0);
 	uart0_hal_iniciar(callback_entrada, linea_serie_drv_continuar_envio);
 	encolar=funcion_encolar_evento;
 }
@@ -19,7 +22,7 @@ void uart0_drv_iniciar(void (*funcion_encolar_evento)()){//// el ioreserva solo 
 void callback_entrada(uint8_t car){
 		if(estado == 1){
 			if((car != '!' && indice == 3 ) || (indice > 3)){
-				gpio_hal_escribir(GPIO_SERIE_ERROR, GPIO_SERIE_ERROR_BITS, 1);
+				gpio_hal_escribir(evento_uart, evento_uart_bits, 1);
 				estado=2;
 				indice=0;
 			}else if(car == '!' && indice == 3 ){
@@ -36,7 +39,7 @@ void callback_entrada(uint8_t car){
 		}
 		else if(estado == 2){
 			if(car=='$'){
-				gpio_hal_escribir(GPIO_SERIE_ERROR, GPIO_SERIE_ERROR_BITS, 0);
+				gpio_hal_escribir(evento_uart, evento_uart_bits, 0);
 				estado = 1;
 			}
 		}

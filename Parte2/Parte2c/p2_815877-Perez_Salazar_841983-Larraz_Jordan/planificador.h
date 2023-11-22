@@ -10,6 +10,7 @@
 #include "visualizar.h"
 #include "juego.h"
 #include "linea_serie_drv.h"
+#include "Watchdog.h"
 
 
 #define USUARIO_AUSENTE 12

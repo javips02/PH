@@ -2,8 +2,9 @@
 #include "Watchdog.h"
 
 void WD_hal_inicializar(int sec){
-	WDTC = sec * 15000;
+	WDTC = (sec * 15000000)/4;
 	WDMOD = 3;
+	WD_hal_feed();
 }
 void WD_hal_feed(void){
 	disable_irq();
@@ -11,5 +12,7 @@ void WD_hal_feed(void){
 	WDFEED = 0x55;
 	enable_irq();
 }
-void WD_hal_test(void);
+void WD_hal_test(void){
+	while(1);
+}
 

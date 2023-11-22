@@ -15,8 +15,10 @@ void planificador(void){
 	uint32_t data;
 	FIFO_inicializar(GPIO_OVERFLOW);
 	alarma_inicializar();
+	WD_hal_inicializar(1);
+	//WD_hal_test();
 	alarma_activar(POWER_DOWN, USUARIO_AUSENTE*1000, 0);
-	uart0_drv_iniciar(FIFO_encolar);
+	uart0_drv_iniciar(FIFO_encolar, GPIO_SERIE_ERROR, GPIO_SERIE_ERROR_BITS);
 	botones_ini();
 	temporizador_drv_iniciar();
 	temporizador_drv_empezar();
@@ -28,6 +30,7 @@ void planificador(void){
 		while(FIFO_extraer(&aTratar, &data) < 1){
 			power_hal_wait();
 		};
+		WD_hal_feed();
 			if(aTratar == TIMER1){
 				alarma_tratar_evento();
 			}
@@ -56,7 +59,9 @@ void planificador(void){
 		}
 		else if(aTratar==ev_RX_SERIE){
 			juego_tratar_evento(aTratar, data);
-			
+		}
+		else if(aTratar == ev_TX_SERIE){
+			juego_tratar_evento(aTratar, data);
 		}
 	}
 }

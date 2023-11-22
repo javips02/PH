@@ -8,6 +8,7 @@
 #include "linea_serie_drv.h"
 void juego_inicializar(void);
 void juego_tratar_evento(EVENTO_T ID_Evento, uint32_t auxData);
+void conecta_K_visualizar_tablero_por_pantalla(TABLERO *t);
 
 #endif
 
