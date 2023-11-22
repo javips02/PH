@@ -48,6 +48,9 @@ uint8_t conecta_K_hay_linea_arm_armv2(TABLERO *t, uint8_t fila, uint8_t
 /* *****************************************************************************
  * declaración funciones internas conecta_K
  */
+/* Declaraciones para acceso desde juego.h */
+void conecta_K_test_cargar_tablero(TABLERO *t);
+void conecta_K_visualizar_tablero(TABLERO *t, uint8_t pantalla[8][8]);
 
 int conecta_K_verificar_K_en_linea(TABLERO *t, uint8_t fila, uint8_t columna, uint8_t color);
 
