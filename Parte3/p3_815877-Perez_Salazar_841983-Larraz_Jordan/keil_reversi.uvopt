@@ -142,7 +142,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGDARM</Key>
-          <Name>(134=-1,-1,-1,-1,0)(135=-1,-1,-1,-1,0)(107=1109,380,1440,708,0)(108=-1,-1,-1,-1,0)(106=994,204,1272,558,0)(105=1250,50,1440,294,0)(80=877,490,1388,900,0)(104=532,456,848,875,0)(100=1337,91,1920,273,0)(113=829,341,1214,782,0)(112=429,240,814,832,0)(136=-1,-1,-1,-1,0)(117=-1,-1,-1,-1,0)(110=914,367,1440,822,0)(111=914,333,1440,788,0)(114=277,433,963,881,0)(115=-1,-1,-1,-1,0)(116=790,303,1076,593,0)</Name>
+          <Name>(134=-1,-1,-1,-1,0)(135=-1,-1,-1,-1,0)(107=1109,380,1440,708,0)(108=-1,-1,-1,-1,0)(106=994,204,1272,558,0)(105=1250,50,1440,294,0)(80=877,490,1388,900,0)(104=532,456,848,875,0)(100=887,91,1470,273,0)(113=829,341,1214,782,0)(112=429,240,814,832,0)(136=-1,-1,-1,-1,0)(117=-1,-1,-1,-1,0)(110=914,367,1440,822,0)(111=914,333,1440,788,0)(114=277,433,963,881,0)(115=-1,-1,-1,-1,0)(116=790,303,1076,593,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -153,22 +153,6 @@
       <Breakpoint>
         <Bp>
           <Number>0</Number>
-          <Type>0</Type>
-          <LineNumber>113</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>5052</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\juego.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
           <Type>0</Type>
           <LineNumber>106</LineNumber>
           <EnabledFlag>1</EnabledFlag>
@@ -181,10 +165,10 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>.\juego.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\keil_reversi\juego.c\106</Expression>
         </Bp>
         <Bp>
-          <Number>2</Number>
+          <Number>1</Number>
           <Type>0</Type>
           <LineNumber>102</LineNumber>
           <EnabledFlag>1</EnabledFlag>
@@ -197,10 +181,10 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>.\juego.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\keil_reversi\juego.c\102</Expression>
         </Bp>
         <Bp>
-          <Number>3</Number>
+          <Number>2</Number>
           <Type>0</Type>
           <LineNumber>0</LineNumber>
           <EnabledFlag>1</EnabledFlag>
@@ -216,7 +200,7 @@
           <Expression>0x00000000</Expression>
         </Bp>
         <Bp>
-          <Number>4</Number>
+          <Number>3</Number>
           <Type>0</Type>
           <LineNumber>0</LineNumber>
           <EnabledFlag>1</EnabledFlag>
