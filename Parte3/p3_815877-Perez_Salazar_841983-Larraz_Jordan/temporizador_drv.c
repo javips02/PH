@@ -1,9 +1,7 @@
-#include <LPC210X.h>                            // LPC21XX Peripheral Registers
 #include "temporizador_drv.h"
 
  void (*encolarDRV)(EVENTO_T, uint32_t)= NULL; 
  EVENTO_T id_evento_a_encolar;
-
 /* Setup the Timer Counter 0 Interrupt */
 void temporizador_drv_iniciar (void) { //Genera timer 
 	temporizador_hal_iniciar();
