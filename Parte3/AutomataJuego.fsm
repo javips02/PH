@@ -7,135 +7,135 @@
     <outputnames></outputnames>
     <itransition ypos="58" endx="355" xpos="318" endy="57"/>
     <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="msg_Instrucciones" moore_outputs="" ypos="57" code="0" xpos="395" linewidth="1">IDLE</state>
-    <state pencolor="0" exit_actions="" radius="80" description="" finalstate="0" entry_actions="juego_inicializar(funcion_encolar);" moore_outputs="" ypos="204" code="1" xpos="233" linewidth="1">first_game</state>
-    <state pencolor="0" exit_actions="" radius="80" description="" finalstate="0" entry_actions="mostrarTablero()" moore_outputs="" ypos="385" code="6" xpos="387" linewidth="1">esperarJugada</state>
-    <state pencolor="0" exit_actions="" radius="80" description="" finalstate="0" entry_actions=" preview = true; conecta_K_visualizar_tablero_por_pantalla" moore_outputs="" ypos="670" code="4" xpos="828" linewidth="1">preview_move</state>
+    <state pencolor="0" exit_actions="" radius="80" description="" finalstate="0" entry_actions="juego_ini_primera();" moore_outputs="" ypos="216" code="1" xpos="200" linewidth="1">first_game</state>
+    <state pencolor="0" exit_actions="" radius="80" description="" finalstate="0" entry_actions="mostrarTablero()" moore_outputs="" ypos="388" code="6" xpos="389" linewidth="1">esperarJugada</state>
+    <state pencolor="0" exit_actions="" radius="80" description="" finalstate="0" entry_actions=" preview = true; conecta_K_visualizar_tablero_por_pantalla" moore_outputs="" ypos="561" code="4" xpos="840" linewidth="1">preview_move</state>
     <state pencolor="0" exit_actions="" radius="100" description="" finalstate="0" entry_actions="if (player==1 &amp;&amp; turnos=maxturnos) {player == 2}&#xa;else if (player==2 &amp;&amp; turnos=maxturnos) {player == 1}; conecta_K_hacer_jugada(entrada, &amp;cuadricula, salida);&#xa;&#x9;&#x9;&#x9;conecta_K_visualizar_tablero_por_pantalla(&amp;cuadricula); verificar_linea" moore_outputs="" ypos="569" code="5" xpos="1310" linewidth="1">exec_move</state>
     <state pencolor="0" exit_actions="" radius="80" description="" finalstate="0" entry_actions="bit_gpio_err; Msg_ERR" moore_outputs="" ypos="616" code="10" xpos="498" linewidth="1">errorCMD</state>
-    <state pencolor="0" exit_actions="" radius="80" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="350" code="11" xpos="814" linewidth="1">rendición</state>
-    <state pencolor="0" exit_actions="" radius="100" description="" finalstate="0" entry_actions="mostrarTablero(); MostrarMSGWinner()" moore_outputs="" ypos="137" code="7" xpos="1207" linewidth="1">WIN</state>
-    <state pencolor="0" exit_actions="" radius="100" description="" finalstate="0" entry_actions="mostrarTiempos()" moore_outputs="" ypos="130" code="12" xpos="912" linewidth="1">WinnerInfo</state>
-    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="392" code="3" xpos="1048" linewidth="1">PowerDown</state>
-    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="68" code="2" xpos="566" linewidth="1">msg_Err</state>
-    <state pencolor="0" exit_actions="" radius="80" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="205" code="8" xpos="561" linewidth="1">new_game</state>
-    <transition c1x="466.1953795712471" c2y="51.29932899831192" c1y="51.06212689368377" description="" straight="1" type="2" ypos="50.82492478905562" endx="529.545176013653" xpos="434.5204813500441" endy="51.53653110294007" c2x="497.87027779245">
+    <state pencolor="0" exit_actions="" radius="80" description="" finalstate="0" entry_actions="mostrarMsgRendición" moore_outputs="" ypos="352" code="11" xpos="911" linewidth="1">rendición</state>
+    <state pencolor="0" exit_actions="" radius="100" description="" finalstate="0" entry_actions=" MostrarMSGWinner()" moore_outputs="" ypos="133" code="7" xpos="1208" linewidth="1">WIN</state>
+    <state pencolor="0" exit_actions="" radius="100" description="" finalstate="0" entry_actions="finalizarPartida()" moore_outputs="" ypos="131" code="12" xpos="880" linewidth="1">Estadisticas</state>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="68" code="2" xpos="571" linewidth="1">msg_Err</state>
+    <state pencolor="0" exit_actions="" radius="80" description="" finalstate="0" entry_actions="juego_ini()" moore_outputs="" ypos="216" code="8" xpos="570" linewidth="1">new_game</state>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="200" code="9" xpos="390" linewidth="1">fin_por_lleno</state>
+    <transition c1x="467.8620462379138" c2y="51.29932899831192" c1y="51.06212689368377" description="" straight="1" type="2" ypos="50.82492478905562" endx="534.545176013653" xpos="434.5204813500441" endy="51.53653110294007" c2x="501.2036111257833">
       <from>0</from>
       <to>2</to>
-      <inputs default="0" any="0" invert="0"></inputs>
+      <inputs default="0" any="0" invert="0">!$NEW</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="349.8533294616655" c2y="133.4985681564519" c1y="113.1378278982243" description="" straight="1" type="2" ypos="92.77708763999664" endx="295.3370760249931" xpos="377.1114561800017" endy="153.8593084146795" c2x="322.5952027433293">
+    <transition c1x="334.8533294616655" c2y="134.4985681564519" c1y="97.13782789822426" description="" straight="0" type="2" ypos="92.77708763999664" endx="262.3370760249931" xpos="377.1114561800017" endy="165.8593084146795" c2x="270.5952027433293">
       <from>0</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">$NEW!&amp;&amp;PrimeraPartida==true</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="446.3223844399439" c2y="131.5799918971837" c1y="110.1424757306838" description="" straight="1" type="2" ypos="88.70495956418401" endx="500.1902924518561" xpos="419.3884304339877" endy="153.0175080636835" c2x="473.2563384458999">
+    <transition c1x="460.3223844399439" c2y="135.5799918971837" c1y="92.14247573068384" description="" straight="0" type="2" ypos="88.70495956418401" endx="509.1902924518561" xpos="419.3884304339877" endy="164.0175080636835" c2x="498.2563384459">
       <from>0</from>
       <to>8</to>
-      <inputs default="0" any="0" invert="0">$NEW! &amp;&amp; PrimeraPartida==false</inputs>
+      <inputs default="0" any="0" invert="0">$NEW!&amp;&amp;!PrimeraPartida</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="309.0540303643353" c2y="296.5677514570519" c1y="279.0434107704904" description="" straight="1" type="2" ypos="261.519070083929" endx="349.9585555974099" xpos="288.601767747798" endy="314.0920921436133" c2x="329.5062929808726">
+    <transition c1x="287.720697031002" c2y="302.5677514570518" c1y="288.0434107704905" description="" straight="1" type="2" ypos="273.519070083929" endx="351.9585555974099" xpos="255.601767747798" endy="317.0920921436133" c2x="319.8396263142059">
       <from>1</from>
       <to>6</to>
-      <inputs default="0" any="0" invert="0"></inputs>
+      <inputs default="0" any="0" invert="0">ev_TX_SERIE</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="542.7275143065299" c2y="587.7593579558036" c1y="492.421542624331" description="" straight="0" type="2" ypos="394.0837272928585" endx="749.2173152945651" xpos="466.4826138125123" endy="656.0971732872762" c2x="636.9724148005475">
-      <from>6</from>
-      <to>4</to>
-      <inputs default="0" any="0" invert="0">$x-x!</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="550.3838888200365" c2y="352.5703075760109" c1y="350.8610374422929" description="" straight="1" type="2" ypos="349.1517673085748" endx="734.1145494183929" xpos="458.5185585208583" endy="354.2795777097289" c2x="642.2492191192147">
+    <transition c1x="584.0505554867032" c2y="354.9036409093443" c1y="353.5277041089594" description="" straight="1" type="2" ypos="352.1517673085748" endx="831.1145494183929" xpos="460.5185585208583" endy="356.2795777097289" c2x="707.582552452548">
       <from>6</from>
       <to>11</to>
       <inputs default="0" any="0" invert="0">EINT2||$END!</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="379.5659874043806" c2y="580.5461715072582" c1y="520.1200798968807" description="" straight="1" type="2" ypos="459.6939882865032" endx="421.9974600767608" xpos="358.3502510681906" endy="640.9722631176358" c2x="400.7817237405707">
+    <transition c1x="380.8993207377139" c2y="581.5461715072581" c1y="522.1200798968808" description="" straight="1" type="2" ypos="462.6939882865032" endx="421.9974600767608" xpos="360.3502510681906" endy="640.9722631176358" c2x="401.4483904072374">
       <from>6</from>
       <to>10</to>
       <inputs default="0" any="0" invert="0">comando_invalido</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1008.523683207048" c2y="600.3090723241211" c1y="638.8717142261245" description="" straight="1" type="2" ypos="677.4343561281278" endx="1210.263418304121" xpos="907.6538156585118" endy="561.7464304221178" c2x="1109.393550755585">
+    <transition c1x="540.1642291832393" c2y="522.7593579558036" c1y="523.3762527227885" description="" straight="0" type="2" ypos="421.9547100984576" endx="761.2173152945651" xpos="461.4367148767095" endy="547.0971732872762" c2x="628.9724148005475">
+      <from>6</from>
+      <to>4</to>
+      <inputs default="0" any="0" invert="0">$x-x!</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="1016.523683207048" c2y="563.9757389907878" c1y="566.2050475594577" description="" straight="1" type="2" ypos="568.4343561281278" endx="1210.263418304121" xpos="919.6538156585118" endy="561.7464304221178" c2x="1113.393550755585">
       <from>4</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">wait(3)/preview=false;</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="838.2367767472587" c2y="483.2846450991167" c1y="540.6746263541925" description="" straight="1" type="2" ypos="598.0646076092681" endx="788.7017787186529" xpos="863.0042757615615" endy="425.8946638440411" c2x="813.4692777329558">
-      <from>4</from>
-      <to>11</to>
-      <inputs default="0" any="0" invert="0">EINT2||$END!</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="717.3972252973754" c2y="386.7025006052572" c1y="427.1114231820461" description="" straight="0" type="2" ypos="601.017131160477" endx="465.4464540552736" xpos="787.4862516339309" endy="369.3107091889453" c2x="656.1787138593591">
+    <transition c1x="687.3972252973754" c2y="419.4538047272733" c1y="406.1114231820461" description="" straight="0" type="2" ypos="492.017131160477" endx="468.4034764221312" xpos="799.4862516339309" endy="397.7513041220161" c2x="663.5821902814903">
       <from>4</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">EINT1</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1254.145448364581" c2y="312.2573139543666" c1y="399.0761526240361" description="" straight="1" type="2" ypos="485.8949912937057" endx="1253.675861955812" xpos="1254.380241568965" endy="225.438475284697" c2x="1253.910655160197">
+    <transition c1x="936.0804865876264" c2y="430.4443055333189" c1y="560.3668993425982" description="" straight="0" type="2" ypos="519.6922729884058" endx="979.5994340570036" xpos="908.5103765070344" endy="393.1596604342021" c2x="1078.735378456626">
+      <from>4</from>
+      <to>11</to>
+      <inputs default="0" any="0" invert="0">EINT2||$END!</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="1253.401918070711" c2y="310.6779733793207" c1y="398.2864823365132" description="" straight="1" type="2" ypos="485.8949912937057" endx="1251.445271074203" xpos="1254.380241568965" endy="223.0694644221282" c2x="1252.423594572457">
       <from>5</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0">hayLinea</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1086.068194994688" c2y="741.1369252097034" c1y="959.34281875937" description="" straight="0" type="2" ypos="658.4427190999916" endx="329.257410282198" xpos="1265.278640450004" endy="440.3696065787142" c2x="170.3939161650543">
+    <transition c1x="1086.068194994688" c2y="686.1369252097034" c1y="959.34281875937" description="" straight="0" type="2" ypos="658.4427190999916" endx="331.257410282198" xpos="1265.278640450004" endy="443.3696065787142" c2x="2.393916165054293">
       <from>5</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">!hay_linea</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="634.5416779729494" c2y="655.0025536776647" c1y="638.3033648360832" description="" straight="1" type="2" ypos="621.6041759945018" endx="748.0181015954348" xpos="577.8034661617066" endy="671.7017425192461" c2x="691.2798897841921">
+    <transition c1x="638.5416779729493" c2y="582.3358870109979" c1y="601.97003150275" description="" straight="1" type="2" ypos="621.6041759945018" endx="760.0181015954348" xpos="577.8034661617066" endy="562.7017425192461" c2x="699.2798897841922">
       <from>10</from>
       <to>4</to>
       <inputs default="0" any="0" invert="0">$x-x!/gpio29=0</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="632.3568145341695" c2y="460.8037342400934" c1y="527.2314527821685" description="" straight="1" type="2" ypos="593.6591713242436" endx="747.4359764529725" xpos="574.8172335747681" endy="394.3760156980183" c2x="689.8963954935711">
+    <transition c1x="379.498020967735" c2y="467.8757593332482" c1y="508.4952049188659" description="" straight="1" type="2" ypos="548.7438864630697" endx="508.0464149132911" xpos="454.6800831959762" endy="536.6333221850001" c2x="558.4913987844403">
+      <from>10</from>
+      <to>10</to>
+      <inputs default="0" any="0" invert="0">!$x-x!</inputs>
+      <outputs></outputs>
+    </transition>
+    <transition c1x="662.3182732707732" c2y="465.1092341239512" c1y="532.6660732419773" description="" straight="0" type="2" ypos="580.2229123600034" endx="838.846469252333" xpos="569.5541752799933" endy="386.5523950059251" c2x="764.0823712615531">
       <from>10</from>
       <to>11</to>
       <inputs default="0" any="0" invert="0">EINT2||$END!</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="379.498020967735" c2y="467.8757593332482" c1y="508.4952049188659" description="" straight="1" type="2" ypos="548.7438864630697" endx="508.0464149132911" xpos="454.6800831959762" endy="536.6333221850001" c2x="558.4913987844403">
-      <from>10</from>
-      <to>10</to>
-      <inputs default="0" any="0" invert="0">CMD_Err</inputs>
-      <outputs></outputs>
-    </transition>
-    <transition c1x="855.8225688447545" c2y="240.7386043412004" c1y="258.83055097017" description="" straight="1" type="2" ypos="276.9224975991394" endx="874.3622953044062" xpos="846.5527056149288" endy="222.6466577122309" c2x="865.0924320745804">
+    <transition c1x="1043.899195262561" c2y="206.3001460526207" c1y="305.6771000533374" description="" straight="0" type="2" ypos="326.0540540540541" endx="937.3462344363328" xpos="986.6756756756756" endy="212.9231920519041" c2x="1007.122714849447">
       <from>11</from>
       <to>12</to>
-      <inputs default="0" any="0" invert="0"></inputs>
+      <inputs default="0" any="0" invert="0">ev_TX_SERIE</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="1075.21903213387" c2y="138.2831369289633" c1y="138.1623735430976" description="" straight="1" type="2" ypos="138.0416101572318" endx="1011.646246590117" xpos="1107.005424905746" endy="138.4039003148291" c2x="1043.432639361993">
+    <transition c1x="1065.21903213387" c2y="137.6164702622966" c1y="135.8290402097642" description="" straight="1" type="2" ypos="134.0416101572318" endx="979.646246590117" xpos="1108.005424905746" endy="139.4039003148291" c2x="1022.432639361993">
       <from>7</from>
       <to>12</to>
-      <inputs default="0" any="0" invert="0"></inputs>
+      <inputs default="0" any="0" invert="0">ev_TX_SERIE</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="837.1743508745245" c2y="1.298700627886746" c1y="-1.977708551695855" description="" straight="0" type="2" ypos="116.7458822687215" endx="401.7585526044338" xpos="812.8822500095698" endy="17.57510980746934" c2x="530.4664517394792">
+    <transition c1x="805.1743508745245" c2y="1.298700627886746" c1y="-0.977708551695855" description="" straight="0" type="2" ypos="117.7458822687215" endx="401.7585526044338" xpos="780.8822500095699" endy="17.57510980746934" c2x="530.4664517394792">
       <from>12</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0"></inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="508.546136766247" c2y="34.81206918862367" c1y="33.48213875540634" description="" straight="1" type="2" ypos="32.15220832218901" endx="429.1312733460784" xpos="548.2535684763312" endy="36.141999621841" c2x="468.8387050561627">
+    <transition c1x="678.4373047419801" c2y="194.2400476578308" c1y="31.91859882746206" description="" straight="0" type="2" ypos="58.29857499854668" endx="633.8948142085005" xpos="609.8057000058133" endy="167.8600714867461" c2x="706.2632094723336">
       <from>2</from>
-      <to>0</to>
-      <inputs default="0" any="0" invert="0"></inputs>
+      <to>8</to>
+      <inputs default="0" any="0" invert="0">$NEW</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="477.5977726432436" c2y="297.5477908277809" c1y="278.2692797130937" description="" straight="1" type="2" ypos="258.9907685984065" endx="428.8610426669055" xpos="501.9661376314126" endy="316.8263019424682" c2x="453.2294076550746">
+    <transition c1x="484.2644393099102" c2y="303.2144574944476" c1y="286.6026130464271" description="" straight="1" type="2" ypos="269.9907685984065" endx="430.8610426669055" xpos="510.9661376314126" endy="319.8263019424682" c2x="457.5627409884079">
       <from>8</from>
       <to>6</to>
-      <inputs default="0" any="0" invert="0"></inputs>
+      <inputs default="0" any="0" invert="0">ev_TX_SERIE</inputs>
       <outputs></outputs>
     </transition>
   </machine>

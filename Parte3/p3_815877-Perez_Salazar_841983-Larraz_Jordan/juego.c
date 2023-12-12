@@ -249,7 +249,8 @@ void juego_tratar_evento(EVENTO_T ID_Evento, uint32_t auxData){ //trata los even
 					comandoNoValido(nuevoVector);
 				}
 			}
-	}else if(estadoActual==PREVIEW_MOVE){
+	}
+		else if(estadoActual==PREVIEW_MOVE){
 					if (ID_Evento == ev_confirmarJugada) { //evitamos que entre cuando no ha preview
 						tiempoTotalHumano += clock_get_us() - tIniMovimientoHumano;		//sumamos el tiempo de jugador 	
 						numJugadasHumano++;
