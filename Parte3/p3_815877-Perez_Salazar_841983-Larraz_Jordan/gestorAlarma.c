@@ -1,8 +1,19 @@
 #include "gestorAlarma.h"
+#define MAX_ALARMAS 4
 
-static Alarma AlarmasPosibles[MAX_ALARMAS];
-static void (*encolar)()=NULL;
-EVENTO_T miEventoTimer;
+typedef struct {
+    EVENTO_T id; // Campo para identificar el evento
+		uint8_t enUso;
+		uint32_t retardo;
+		uint32_t auxData;
+		uint8_t esPeriodica;
+		uint32_t contador;
+} Alarma;//tipo de dato alarma con un evento que encolara, un campo para saber si esta siendo usada, el retardo para que salte la alarma, el auxData que encolara, un int para saber si es periodica
+// y el contador que lleva. 
+
+static Alarma AlarmasPosibles[MAX_ALARMAS];//vector de alarmas
+static void (*encolar)()=NULL;// funcion de fifo encolar que se asociara en el constructor
+EVENTO_T miEventoTimer;//el evebto de la propia alarma
 
 void alarma_inicializar(void (*funcion_encolar_evento)(), EVENTO_T _miEventoTimer){
 	for (int i =0;i<MAX_ALARMAS;i++){
@@ -14,7 +25,7 @@ void alarma_inicializar(void (*funcion_encolar_evento)(), EVENTO_T _miEventoTime
 	//Estoy iniciando el conteo de timer1 con esta funcion? ya no me acuerdo. Hay que iniciarlo ya desde esta funcion si no estamos haciendolo con hal_reloj
 }
 
-void alarma_activar(EVENTO_T ID_evento, uint32_t retardo, uint32_t auxData){
+void alarma_activar(EVENTO_T ID_evento, uint32_t retardo, uint32_t auxData){// se busca un hueco para iniciar la alarma y sino hay salta overflow
 	int indice=-1;
 	uint8_t encontrado = 0;
 	for (int i = 0; i < MAX_ALARMAS; i++) {
@@ -37,7 +48,7 @@ void alarma_activar(EVENTO_T ID_evento, uint32_t retardo, uint32_t auxData){
     uint32_t retardoReal = retardo & 0x7FFFFFFF;
 		
 		AlarmasPosibles[indice].id = ID_evento;
-		if(retardo == 0){
+		if(retardo == 0){// para saber si hay q pararla
 		AlarmasPosibles[indice].enUso=0;
 		}else{
 			AlarmasPosibles[indice].enUso = 1;
@@ -48,7 +59,7 @@ void alarma_activar(EVENTO_T ID_evento, uint32_t retardo, uint32_t auxData){
 		AlarmasPosibles[indice].contador = 0;
 	}
 }	
-void alarma_tratar_evento(void) {
+void alarma_tratar_evento(void) {// aumenta la cuenta de cada alarma
 	for (int i=0; i<MAX_ALARMAS; i++){
 		if (AlarmasPosibles[i].enUso == 1) {
 			AlarmasPosibles[i].contador++; //Cada 1 ms aumentamos cuenta de todas las alarmas activas

@@ -4,7 +4,7 @@
 
 #define MAX 32 //mover a io_reserva
 
-// Definición de la estructura EVENTO_T
+// Definici?n de la estructura EVENTO_T
 typedef struct {
     EVENTO_T id; // Campo para identificar el evento
 		uint8_t procesado;
@@ -13,7 +13,7 @@ typedef struct {
 volatile static EVENTO cqueue_arr[MAX];
 volatile static int front = -1;
 volatile static int rear = -1;
-// Variable para mantener un registro de estadísticas
+// Variable para mantener un registro de estad?sticas
 volatile static uint32_t estadisticasEventos[MAX];
 volatile static uint32_t eventosEncolados;
 static uint32_t evento_fifo, evento_fifo_bits;
@@ -22,7 +22,7 @@ volatile static uint32_t totalAtendidos;
 void FIFO_inicializar(uint32_t _evento_fifo, uint32_t _evento_fifo_bits) {
 		evento_fifo = _evento_fifo;
 		evento_fifo_bits = _evento_fifo_bits;
-		gpio_hal_sentido(evento_fifo,1,GPIO_HAL_PIN_DIR_OUTPUT);
+		gpio_hal_sentido(evento_fifo,1,GPIO_HAL_PIN_DIR_OUTPUT);// se ponen el pin del gpio en un sentido por si ocurre overflow
 		gpio_hal_escribir(evento_fifo,evento_fifo_bits,0);
     front = 0;
     rear = 0;
@@ -70,7 +70,7 @@ void FIFO_encolar(EVENTO_T ID_evento, uint32_t auxData) {
 
 
 uint32_t FIFO_estadisticas(EVENTO_T ID_evento) {
-     // Devuelve el número total de veces que se ha encolado el evento con el ID especificado
+     // Devuelve el n?mero total de veces que se ha encolado el evento con el ID especificado
     if (ID_evento == 0) {
 				return eventosEncolados+totalAtendidos;
     } else {

@@ -1,6 +1,6 @@
 #ifndef IO_RESERVA_H
 #define IO_RESERVA_H
-
+//Fichero de cabecera para la definición de bits relacionados con la E/S en GPIO
 
 #define GPIO_OVERFLOW 31
 #define GPIO_OVERFLOW_BITS 1

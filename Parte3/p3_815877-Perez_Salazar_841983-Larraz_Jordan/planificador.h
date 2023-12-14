@@ -13,11 +13,13 @@
 #include "Watchdog.h"
 #include "power_drv.h"
 
-#define USUARIO_AUSENTE 12
+//Fichero de cabecera en el que se gestionara la ejecucion del programa identificando los eventos encolados y pasnadolos a los modulos indicados. 
 
-void planificadorOverflow(void);	
-void planificador(void);	
-void planificador_Alarm_OF(void);
+#define USUARIO_AUSENTE 12 // constante que se usara para programar la alarma del powerdown
+
+void planificadorOverflow(void);//version de prueba del planificador en el que se produce overdlow	
+void planificador(void);	// version real del planificador en el que se inicializan los modulos y se detectan y procesan eventos	
+void planificador_Alarm_OF(void);// version en el que se produce overflow de alarmas posibles
 
 
 #endif

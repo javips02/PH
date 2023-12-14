@@ -1,28 +1,29 @@
 #include "planificador.h"
 
-/*
+
 void planificadorOverflow(void){
 	FIFO_inicializar(GPIO_OVERFLOW, GPIO_OVERFLOW_BITS);
 	hello_world_iniciar(GPIO_HELLO_WORLD, GPIO_HELLO_WORLD_BITS, FIFO_encolar, ev_LATIDO, ev_VISUALIZAR_HELLO);
 	while(1){
 	}
-}*/
+}
 
 
 void planificador(void){
 	
-	//inicializaciones de los modulos usados en la ejecucion de un juego conecta_K con el HelloWorldContador
-	FIFO_inicializar(GPIO_OVERFLOW, GPIO_OVERFLOW_BITS);
-	alarma_inicializar(FIFO_encolar, TIMER1);
-	WD_hal_inicializar(1);
-	//alarma_activar(POWER_DOWN, USUARIO_AUSENTE*1000, 0);
-	uart0_drv_iniciar(FIFO_encolar, GPIO_SERIE_ERROR, GPIO_SERIE_ERROR_BITS);
-	botones_ini(FIFO_encolar, BOTON, EINT1, EINT2, BOTON_TEMPORIZADOR);
-	temporizador_drv_iniciar();
+	//inicializaciones de los modulos auxiliares usados en la ejecucion de un juego conecta_K con el HelloWorldContador
+	FIFO_inicializar(GPIO_OVERFLOW, GPIO_OVERFLOW_BITS);// se inicializa la cola fifo
+	alarma_inicializar(FIFO_encolar, TIMER1); // se incializan las alarmas
+	WD_hal_inicializar(1);// se inicializa el watchdog para q responda en 1 segundo
+	alarma_activar(POWER_DOWN, USUARIO_AUSENTE*1000, 0);// se activa la alarma para el powerdown
+	uart0_drv_iniciar(FIFO_encolar, GPIO_SERIE_ERROR, GPIO_SERIE_ERROR_BITS);// se inicializa la uart
+	botones_ini(FIFO_encolar, BOTON, EINT1, EINT2, BOTON_TEMPORIZADOR);//se inciializa el modulo de botones
+	temporizador_drv_iniciar();// se inciializa el temporizador y se empieza
 	temporizador_drv_empezar();
-	static uint8_t iniciada = 0;
+	
+	static uint8_t iniciada = 0;// variable auxiliar para que no se gestione de manera correcta la vuelta del powerdown
+	// inicializacion del hello world y el juego conecta k
 	hello_world_iniciar(GPIO_HELLO_WORLD, GPIO_HELLO_WORLD_BITS, FIFO_encolar, ev_LATIDO, ev_VISUALIZAR_HELLO);
-	visualizar_inicializar(JUEGO, JUEGO_BITS);
 	juego_inicializar(GPIO_JUEGO_ERROR, GPIO_JUEGO_ERROR_BITS);
 	
 	EVENTO_T aTratar;
@@ -39,15 +40,13 @@ void planificador(void){
 			}
 			if(aTratar == POWER_DOWN){
 				power_drv_deep_sleep();
+				alarma_activar(POWER_DOWN, USUARIO_AUSENTE*1000, 0);
 				iniciada = 1;
 			}
 		if(aTratar == ev_LATIDO){
 			hello_world_tratar_evento();
 		}	else if(aTratar == ev_VISUALIZAR_HELLO){
 				hello_world_tick_tack();
-		}
-		else if(aTratar == ev_VISUALIZAR_CUENTA){
-			visualizar_jugar(JUEGO, JUEGO_BITS, data);
 		}
 		else if(aTratar == BOTON){
 			if(iniciada == 0){
@@ -61,6 +60,7 @@ void planificador(void){
 			comprobarEstado();
 		}
 		else if(aTratar==ev_RX_SERIE){
+			alarma_activar(POWER_DOWN, USUARIO_AUSENTE*1000, 0);
 			juego_tratar_evento(aTratar, data);
 		}
 		else if(aTratar == ev_TX_SERIE){

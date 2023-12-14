@@ -2,12 +2,11 @@
 
 GPIO_HAL_PIN_T gpio=0;
 uint8_t bits_gpio=0;
-uint8_t cuenta=0;
-static void (*encolar)()=NULL;
-EVENTO_T eventoHello,eventoVisualizarHello;
-
+uint8_t cuenta=0;// cuenta para motrar por el gpio
+static void (*encolar)()=NULL;// variable funcion q se le asigna la de fifo encolar por parametro en el constructor
+EVENTO_T eventoHello,eventoVisualizarHello;// evento qye se encolara
+//funcion de inicializacion
 void hello_world_iniciar(GPIO_HAL_PIN_T gpio_inicial, uint8_t bits, void (*funcion_encolar_evento)(), EVENTO_T _eventoHello, EVENTO_T _eventoVisualizarHello){
-	//void (*funcion_encolar_evento)(EVENTO_T, uint32_t) = FIFO_encolar;
 	gpio = gpio_inicial;
 	bits_gpio=bits;
 	cuenta=0;
@@ -19,10 +18,12 @@ void hello_world_iniciar(GPIO_HAL_PIN_T gpio_inicial, uint8_t bits, void (*funci
 	static uint32_t ret = 0x8000000A;
 	alarma_activar(eventoHello,ret,0);
 }
+//funcion de escribir en el gpio
 void hello_world_tick_tack(void){
 		gpio_hal_escribir(gpio, bits_gpio, cuenta);
 		cuenta++;
 }
+// funcion para encolar el evento
 void hello_world_tratar_evento(void){
 	encolar(eventoVisualizarHello,0);
 }
